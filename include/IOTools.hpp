@@ -17,10 +17,14 @@
 #ifndef IOTOOLS_HPP
 #define IOTOOLS_HPP
 
+#include <stdio.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+
 #include <vector>
 
-#include "ErrorHandler.h"
-#include "StrTools.h"
+#include "ErrorHandler.hpp"
+#include "StrTools.hpp"
 
 namespace IOTools
 {

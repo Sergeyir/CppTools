@@ -1,4 +1,21 @@
-#pragma once
+// $HEADER$
+//------------------------------------------------------------------------------------------------
+//                                       Useful math functions
+//------------------------------------------------------------------------------------------------
+// MathTools
+//
+// ** Free and open code for anyone to use **
+//
+// Author: Sergei Antsupov
+// Email: antsupov0124@gmail.com
+//
+/**
+ * Basic set of variadic functions for simple math calculations
+ **/
+//------------------------------------------------------------------------------------------------
+
+#ifndef MATH_TOOLS_HPP
+#define MATH_TOOLS_HPP
 
 template <typename... Ts> 
 double Maximum(Ts... args)

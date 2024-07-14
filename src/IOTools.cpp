@@ -21,7 +21,7 @@
 
 int GetTerminalWidth()
 {
-   ioctl(STDOUT_FILENO, TIOCGWINZ, &(IOTools::terminalWindow));
+   ioctl(STDOUT_FILENO, TIOCGWINSZ, &(IOTools::terminalWindow));
    return IOTools::terminalWindow.ws_col;
 }
 
@@ -73,7 +73,7 @@ void PrintSeparator(std::string text, std::string color,
 }
 
 void PrintEdgedLine(std::string entry1, std::string entry2, std::string leftEdge, 
-                    std::string rightEdge, const int length)
+                    std::string rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
