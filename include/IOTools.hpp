@@ -34,17 +34,17 @@ namespace IOTools
 template <typename... T>
 void ReadFile(std::string file_name, T&... args)
 {
-	CheckInputFile(file_name);
-	std::ifstream file(file_name);
-	
-	((file >> args), ...);
+   CheckInputFile(file_name);
+   std::ifstream file(file_name);
+   
+   ((file >> args), ...);
 }
 
 template <typename... T>
 void Print(T... args)
 {
-	((std::cout << args << " "), ...);
-	std::cout << std::endl;
+   ((std::cout << args << " "), ...);
+   std::cout << std::endl;
 }
 
 int GetTerminalWidth();
@@ -56,7 +56,7 @@ void PrintSeparator(std::string text, std::string color = "",
                     std::string leftEdge = "//",  std::string body = "-", 
                     std::string rightEdge = "//", int length = -1);
 void PrintEdgedLine(std::string entry1, std::string entry2, std::string leftEdge = "|",
-	                 std::string rightEdge = "|", int length = -1);
+                    std::string rightEdge = "|", int length = -1);
 void PrintBigSeparator(std::string text, std::string ULCorner = "╓", std::string URCorner = "╖",
                        std::string horizontalLine = "─", std::string verticalLine = "║",
                        std::string DLCorner = "╙", std::string DRCorner = "╜");

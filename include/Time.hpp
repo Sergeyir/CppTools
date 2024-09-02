@@ -21,7 +21,7 @@
 #include <chrono>
 #include <iostream>
 
-typedef std::chrono::_V2::system_clock::time_point chrono_t;	
+typedef std::chrono::_V2::system_clock::time_point chrono_t;
 
 chrono_t GetCurrentTime();
 void PrintCurrentTime();

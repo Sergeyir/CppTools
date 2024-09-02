@@ -46,9 +46,9 @@ bool CheckInputFile(std::string name, const bool closeAfterFail)
 }
 
 //Checks if the file can be created
-void CheckOutputFile(std::string name)
+void CheckOutputFile(std::string name, std::ios_base::openmode openmode)
 {
-   std::ofstream file(name.c_str());
+   std::ofstream file(name.c_str(), openmode);
    if(!file.is_open()) PrintError("File " + name + " cannot be created");
 }
 

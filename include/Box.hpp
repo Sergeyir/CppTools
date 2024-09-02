@@ -24,25 +24,25 @@
 
 class Box
 {
-	public:
+   public:
 
-	Box(const int boxWidth = -1);
-	Box(std::string boxName, const int boxWidth = -1);
-	void SetName(std::string boxName);
-	void AddEntry(std::string entryName, const double entryValue, unsigned const int precision = 2);
-	void AddEntry(std::string entryName, const int entryValue);
-	void AddEntry(std::string entryName, std::string entryValue);
-	void AddEntry(std::string entryName, const bool entryValue);
-	void Print(std::string titleColor = OutputColor::GREEN);
+   Box(const int boxWidth = -1);
+   Box(std::string boxName, const int boxWidth = -1);
+   void SetName(std::string boxName);
+   void AddEntry(std::string entryName, const double entryValue, unsigned const int precision = 2);
+   void AddEntry(std::string entryName, const int entryValue);
+   void AddEntry(std::string entryName, std::string entryValue);
+   void AddEntry(std::string entryName, const bool entryValue);
+   void Print(std::string titleColor = OutputColor::GREEN);
    
-	virtual ~Box();
+   virtual ~Box();
    
-	protected:
+   protected:
    
-	std::string name; 
-	std::vector<std::string> entryNames, entryValues;
-	unsigned short width;
-	void CheckEntry();
+   std::string name; 
+   std::vector<std::string> entryNames, entryValues;
+   unsigned short width;
+   void CheckEntry();
 };
 
 #endif

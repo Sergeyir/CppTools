@@ -23,11 +23,11 @@
 
 class Table
 {
-	public:
-	
-	Table(const unsigned short numberOfColumns, const int width = -1);
+   public:
    
-	void Begin(std::string name);
+   Table(const unsigned short numberOfColumns, const int width = -1);
+   
+   void Begin(std::string name);
    
    template<typename... Ts>
    void PrintHeader(Ts... args)
@@ -136,31 +136,31 @@ class Table
       std::cout << verticalBorder << std::endl;
    }
    
-	void End();
+   void End();
 
    virtual ~Table();
 
-	protected:
-	
-	std::string ULBorderCorner = "╔";
-	std::string URBorderCorner = "╗";
-	std::string horizontalBorder = "═";
-	std::string verticalBorder = "║";
-	std::string verticalSeparator = "│";
-	std::string leftAdjVerticalBorder = "╟";
-	std::string rightAdjVerticalBorder = "╢";
-	std::string rightDoubleAdjVerticalBorder = "╠";
-	std::string leftDoubleAdjVerticalBorder = "╣";
-	std::string horizontalSeparator = "─";
-	std::string DLBorderCorner = "╚";
-	std::string DRBorderCorner = "╝";
-	std::string downAdjHorizontalBorder = "╤";
-	std::string upAdjHorizontalBorder = "╧";
-	std::string cross = "┼";
-	
+   protected:
+   
+   std::string ULBorderCorner = "╔";
+   std::string URBorderCorner = "╗";
+   std::string horizontalBorder = "═";
+   std::string verticalBorder = "║";
+   std::string verticalSeparator = "│";
+   std::string leftAdjVerticalBorder = "╟";
+   std::string rightAdjVerticalBorder = "╢";
+   std::string rightDoubleAdjVerticalBorder = "╠";
+   std::string leftDoubleAdjVerticalBorder = "╣";
+   std::string horizontalSeparator = "─";
+   std::string DLBorderCorner = "╚";
+   std::string DRBorderCorner = "╝";
+   std::string downAdjHorizontalBorder = "╤";
+   std::string upAdjHorizontalBorder = "╧";
+   std::string cross = "┼";
+   
    int nColumns;
-	int rowLength;
-	double cellSize;
+   int rowLength;
+   double cellSize;
 };
 
 #endif

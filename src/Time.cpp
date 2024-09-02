@@ -26,7 +26,7 @@ chrono_t GetCurrentTime()
 
 void PrintCurrentTime()
 {
-   std::time_t currentTime = std::time(nullptr);	
+   std::time_t currentTime = std::time(nullptr);
    std::cout << std::asctime(std::localtime(&currentTime));
 }
 
