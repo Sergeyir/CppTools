@@ -1,6 +1,6 @@
 // $SOURCE$
 //------------------------------------------------------------------------------------------------
-//                               StrTools functions declarations
+//                               StrTools functions realisations
 //------------------------------------------------------------------------------------------------
 // StrTools : string tools
 //
@@ -19,7 +19,7 @@
 
 #include "../include/StrTools.hpp"
 
-int utf8_strlen(const std::string& str)
+int utf8_strlen(std::string const& str)
 {
    int length = 0;
    for (long unsigned int i=0; i < str.length(); i++, length++)

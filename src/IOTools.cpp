@@ -21,8 +21,9 @@
 
 int GetTerminalWidth()
 {
-   ioctl(STDOUT_FILENO, TIOCGWINSZ, &(IOTools::terminalWindow));
-   return IOTools::terminalWindow.ws_col;
+   struct winsize terminalWindow;
+   ioctl(STDOUT_FILENO, TIOCGWINSZ, &(terminalWindow));
+   return terminalWindow.ws_col;
 }
 
 double *ReadFileIntoArray(std::string fileName, const int size)

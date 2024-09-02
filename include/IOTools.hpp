@@ -26,11 +26,6 @@
 #include "ErrorHandler.hpp"
 #include "StrTools.hpp"
 
-namespace IOTools
-{
-   struct winsize terminalWindow;
-}
-
 template <typename... T>
 void ReadFile(std::string file_name, T&... args)
 {
