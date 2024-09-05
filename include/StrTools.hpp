@@ -25,4 +25,4 @@ int utf8_strlen(const std::string& str);
 std::string DtoStr(const double val, const int precision = 2);
 std::string BtoStr(const bool val);
 
-#endif
+#endif /*STR_TOOLS_HPP*/

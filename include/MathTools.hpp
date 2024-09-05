@@ -77,3 +77,5 @@ double AtLeast1Prob(Ts... args)
    for (double val : entries) prod *= 1. - val;
    return 1. - prod;
 }
+
+#endif /*MATH_TOOLS_HPP*/

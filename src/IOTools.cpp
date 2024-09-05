@@ -94,4 +94,4 @@ void PrintBigSeparator(std::string text, std::string ULCorner, std::string URCor
    PrintSimpleSeparator(" " + DLCorner, horizontalLine, DRCorner);
 }
 
-#endif
+#endif /*IOTOOLS_CPP*/

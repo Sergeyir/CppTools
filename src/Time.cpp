@@ -42,4 +42,4 @@ void PrintTimeDuration(std::chrono::_V2::system_clock::time_point start,
                 duration % 1000 << "μs" << std::endl;
 }
 
-#endif
+#endif /*TIME_CPP*/

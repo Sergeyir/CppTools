@@ -47,4 +47,4 @@ std::string BtoStr(const bool val)
    return "false";
 }
 
-#endif
+#endif /*STR_TOOLS_CPP*/

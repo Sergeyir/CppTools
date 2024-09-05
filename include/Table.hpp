@@ -163,4 +163,4 @@ class Table
    double cellSize;
 };
 
-#endif
+#endif /*TABLE_HPP*/

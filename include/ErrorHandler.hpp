@@ -27,4 +27,4 @@ void PrintWarning(std::string message);
 bool CheckInputFile(std::string name, const bool closeAfterFail = true);
 void CheckOutputFile(std::string name, std::ios_base::openmode openmode = std::ios::out);
 
-#endif
+#endif /*ERROR_HANDLER_HPP*/

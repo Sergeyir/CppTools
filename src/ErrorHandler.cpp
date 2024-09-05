@@ -52,4 +52,4 @@ void CheckOutputFile(std::string name, std::ios_base::openmode openmode)
    if(!file.is_open()) PrintError("File " + name + " cannot be created");
 }
 
-#endif
+#endif /*ERROR_HANDLER_CPP*/

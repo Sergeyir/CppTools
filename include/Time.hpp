@@ -28,4 +28,4 @@ void PrintCurrentTime();
 void PrintTimeDuration(std::chrono::_V2::system_clock::time_point start, 
                        std::chrono::_V2::system_clock::time_point stop);
 
-#endif
+#endif /*TIME_HPP*/

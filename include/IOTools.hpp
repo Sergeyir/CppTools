@@ -56,4 +56,4 @@ void PrintBigSeparator(std::string text, std::string ULCorner = "╓", std::stri
                        std::string horizontalLine = "─", std::string verticalLine = "║",
                        std::string DLCorner = "╙", std::string DRCorner = "╜");
 
-#endif
+#endif /*IOTOOLS_HPP*/

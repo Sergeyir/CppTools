@@ -45,4 +45,4 @@ class Box
    void CheckEntry();
 };
 
-#endif
+#endif /*BOX_HPP*/

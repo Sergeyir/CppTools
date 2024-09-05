@@ -46,4 +46,4 @@ void Table::End()
 
 Table::~Table() {};
 
-#endif
+#endif /*TABLE_CPP*/

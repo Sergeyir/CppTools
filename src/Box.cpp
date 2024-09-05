@@ -21,15 +21,15 @@
 
 Box::Box(const int boxWidth) 
 {
-   if (width > 0) width = boxWidth;
-   else width = GetTerminalWidth();
+   if (boxWidth > 0) width = boxWidth;
+   else width = GetTerminalWidth() - 1;
 }
 
 Box::Box(std::string boxName, const int boxWidth)
 {
    name = boxName;
-   if (width > 0) width = boxWidth;
-   else width = GetTerminalWidth();
+   if (boxWidth > 0) width = boxWidth;
+   else width = GetTerminalWidth() - 1;
 }
 
 void Box::SetName(std::string boxName)
@@ -104,4 +104,4 @@ void Box::CheckEntry()
    }
 }
 
-#endif
+#endif /*BOX_CPP*/
