@@ -26,7 +26,7 @@ int GetTerminalWidth()
    return terminalWindow.ws_col;
 }
 
-double *ReadFileIntoArray(std::string fileName, const int size)
+double *ReadFileIntoArray(const std::string& fileName, const int size)
 {
    CheckInputFile(fileName);
    double *buff = new double[size];
@@ -36,13 +36,13 @@ double *ReadFileIntoArray(std::string fileName, const int size)
    return buff;
 }
 
-void PrintInfo(std::string message)
+void PrintInfo(const std::string& message)
 {
    std::cout << OutputColor::GREEN << " INFO: " << OutputColor::RESET << message << std::endl;
 }
 
-void PrintSimpleSeparator(std::string leftEdge, std::string body, 
-                          std::string rightEdge, int length)
+void PrintSimpleSeparator(const std::string& leftEdge, const std::string& body, 
+                          const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
@@ -54,9 +54,8 @@ void PrintSimpleSeparator(std::string leftEdge, std::string body,
    std::cout << rightEdge << std::endl;
 }
 
-void PrintSeparator(std::string text, std::string color, 
-                    std::string leftEdge, std::string body, 
-                    std::string rightEdge, int length)
+void PrintSeparator(const std::string& text, const std::string& color, const std::string& leftEdge, 
+                    const std::string& body, const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
@@ -73,8 +72,8 @@ void PrintSeparator(std::string text, std::string color,
    std::cout << rightEdge << std::endl;
 }
 
-void PrintEdgedLine(std::string entry1, std::string entry2, std::string leftEdge, 
-                    std::string rightEdge, int length)
+void PrintEdgedLine(const std::string& entry1, const std::string& entry2, 
+                    const std::string& leftEdge, const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
@@ -85,9 +84,10 @@ void PrintEdgedLine(std::string entry1, std::string entry2, std::string leftEdge
    std::cout << entry2 << " " << rightEdge << std::endl;
 }
 
-void PrintBigSeparator(std::string text, std::string ULCorner, std::string URCorner,
-   std::string horizontalLine, std::string verticalLine,
-   std::string DLCorner, std::string DRCorner)
+void PrintBigSeparator(const std::string& text, const std::string& ULCorner, 
+                       const std::string& URCorner, const std::string& horizontalLine, 
+                       const std::string& verticalLine, const std::string& DLCorner, 
+                       const std::string& DRCorner)
 {
    PrintSimpleSeparator(" " + ULCorner, horizontalLine, URCorner);
    PrintSeparator(text, "", " " + verticalLine, " ", verticalLine);

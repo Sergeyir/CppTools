@@ -27,7 +27,7 @@ class Table
    
    Table(const unsigned short numberOfColumns, const int width = -1);
    
-   void Begin(std::string name);
+   void Begin(const std::string& name);
    
    template<typename... Ts>
    void PrintHeader(Ts... args)

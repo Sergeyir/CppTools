@@ -27,7 +27,7 @@
 #include "StrTools.hpp"
 
 template <typename... T>
-void ReadFile(std::string file_name, T&... args)
+void ReadFile(const std::string& file_name, T&... args)
 {
    CheckInputFile(file_name);
    std::ifstream file(file_name);
@@ -43,17 +43,19 @@ void Print(T... args)
 }
 
 int GetTerminalWidth();
-double *ReadFileIntoArray(std::string fileName, const int size);
-void PrintInfo(std::string message);
-void PrintSimpleSeparator(std::string leftEdge = "|", std::string body = "-", 
-                          std::string rightEdge = "|", int length = -1);
-void PrintSeparator(std::string text, std::string color = "", 
-                    std::string leftEdge = "//",  std::string body = "-", 
-                    std::string rightEdge = "//", int length = -1);
-void PrintEdgedLine(std::string entry1, std::string entry2, std::string leftEdge = "|",
-                    std::string rightEdge = "|", int length = -1);
-void PrintBigSeparator(std::string text, std::string ULCorner = "╓", std::string URCorner = "╖",
-                       std::string horizontalLine = "─", std::string verticalLine = "║",
-                       std::string DLCorner = "╙", std::string DRCorner = "╜");
+double *ReadFileIntoArray(const std::string& fileName, const int size);
+void PrintInfo(const std::string& message);
+void PrintSimpleSeparator(const std::string& leftEdge = "|", const std::string& body = "-", 
+                          const std::string& rightEdge = "|", int length = -1);
+void PrintSeparator(const std::string& text, const std::string& color = "", 
+                    const std::string& leftEdge = "//",  const std::string& body = "-", 
+                    const std::string& rightEdge = "//", int length = -1);
+void PrintEdgedLine(const std::string& entry1, const std::string& entry2, 
+                    const std::string& leftEdge = "|", const std::string& rightEdge = "|", 
+                    int length = -1);
+void PrintBigSeparator(const std::string& text, const std::string& ULCorner = "╓", 
+                       const std::string& URCorner = "╖", const std::string& horizontalLine = "─", 
+                       const std::string& verticalLine = "║", const std::string& DLCorner = "╙", 
+                       const std::string& DRCorner = "╜");
 
 #endif /*IOTOOLS_HPP*/

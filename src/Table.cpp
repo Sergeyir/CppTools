@@ -26,7 +26,7 @@ Table::Table(const unsigned short numberOfColumns, const int width)
    else rowLength = GetTerminalWidth();
 };
 
-void Table::Begin(std::string name)
+void Table::Begin(const std::string& name)
 {
    PrintSimpleSeparator(" " + ULBorderCorner, horizontalBorder, URBorderCorner);
    PrintSeparator(name, OutputColor::GREEN, " " + verticalBorder, " ", verticalBorder);

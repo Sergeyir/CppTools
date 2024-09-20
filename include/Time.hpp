@@ -25,7 +25,7 @@ typedef std::chrono::_V2::system_clock::time_point chrono_t;
 
 chrono_t GetCurrentTime();
 void PrintCurrentTime();
-void PrintTimeDuration(std::chrono::_V2::system_clock::time_point start, 
-                       std::chrono::_V2::system_clock::time_point stop);
+void PrintTimeDuration(const std::chrono::_V2::system_clock::time_point start, 
+                       const std::chrono::_V2::system_clock::time_point stop);
 
 #endif /*TIME_HPP*/

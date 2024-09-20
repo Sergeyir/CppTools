@@ -27,13 +27,14 @@ class Box
    public:
 
    Box(const int boxWidth = -1);
-   Box(std::string boxName, const int boxWidth = -1);
-   void SetName(std::string boxName);
-   void AddEntry(std::string entryName, const double entryValue, unsigned const int precision = 2);
-   void AddEntry(std::string entryName, const int entryValue);
-   void AddEntry(std::string entryName, std::string entryValue);
-   void AddEntry(std::string entryName, const bool entryValue);
-   void Print(std::string titleColor = OutputColor::GREEN);
+   Box(const std::string& boxName, const int boxWidth = -1);
+   void SetName(const std::string& boxName);
+   void AddEntry(const std::string& entryName, const double entryValue, 
+                 const unsigned int precision = 2);
+   void AddEntry(const std::string& entryName, const int entryValue);
+   void AddEntry(const std::string& entryName, const std::string& entryValue);
+   void AddEntry(const std::string& entryName, const bool entryValue);
+   void Print(const std::string& titleColor = OutputColor::GREEN);
    
    virtual ~Box();
    

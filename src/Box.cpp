@@ -25,47 +25,48 @@ Box::Box(const int boxWidth)
    else width = GetTerminalWidth() - 1;
 }
 
-Box::Box(std::string boxName, const int boxWidth)
+Box::Box(const std::string& boxName, const int boxWidth)
 {
    name = boxName;
    if (boxWidth > 0) width = boxWidth;
    else width = GetTerminalWidth() - 1;
 }
 
-void Box::SetName(std::string boxName)
+void Box::SetName(const std::string& boxName)
 {
    name = boxName;
 }
 
-void Box::AddEntry(std::string entryName, const double entryValue, unsigned const int precision)
+void Box::AddEntry(const std::string& entryName, const double entryValue, 
+                   const unsigned int precision)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(DtoStr(entryValue, precision));
    CheckEntry();
 }
 
-void Box::AddEntry(std::string entryName, const int entryValue)
+void Box::AddEntry(const std::string& entryName, const int entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
    CheckEntry();
 }
 
-void Box::AddEntry(std::string entryName, std::string entryValue)
+void Box::AddEntry(const std::string& entryName, const std::string& entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(entryValue);
    CheckEntry();
 }
 
-void Box::AddEntry(std::string entryName, const bool entryValue)
+void Box::AddEntry(const std::string& entryName, const bool entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(BtoStr(entryValue));
    CheckEntry();
 }
 
-void Box::Print(std::string titleColor)
+void Box::Print(const std::string& titleColor)
 {
    if (entryNames.size() == 0) 
    {

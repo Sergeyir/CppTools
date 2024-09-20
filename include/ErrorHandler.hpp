@@ -22,9 +22,10 @@
 
 #include "OutputColor.hpp"
 
-void PrintError(std::string message);
-void PrintWarning(std::string message);
-bool CheckInputFile(std::string name, const bool closeAfterFail = true);
-void CheckOutputFile(std::string name, std::ios_base::openmode openmode = std::ios::out);
+void PrintError(const std::string& message);
+void PrintWarning(const std::string& message);
+bool CheckInputFile(const std::string& name, const bool closeAfterFail = true);
+void CheckOutputFile(const std::string& name, 
+                     const std::ios_base::openmode openmode = std::ios::out);
 
 #endif /*ERROR_HANDLER_HPP*/

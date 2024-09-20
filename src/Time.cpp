@@ -26,15 +26,16 @@ chrono_t GetCurrentTime()
 
 void PrintCurrentTime()
 {
-   std::time_t currentTime = std::time(nullptr);
+   const std::time_t currentTime = std::time(nullptr);
    std::cout << std::asctime(std::localtime(&currentTime));
 }
 
-void PrintTimeDuration(std::chrono::_V2::system_clock::time_point start, 
-                       std::chrono::_V2::system_clock::time_point stop)
+void PrintTimeDuration(const std::chrono::_V2::system_clock::time_point start, 
+                       const std::chrono::_V2::system_clock::time_point stop)
 {
-   unsigned int duration = (unsigned int) 
+   const unsigned int duration = (unsigned int) 
       std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
+   
    std::cout << duration/3600000000000 << "h " << 
                 (duration % 3600000000)/60000000000 << "m " << 
                 (duration % 60000000)/1000000 << "s " << 
