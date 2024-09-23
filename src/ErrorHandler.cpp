@@ -35,6 +35,8 @@ void PrintWarning(const std::string& message)
 //Checks if the file exists
 bool CheckInputFile(const std::string& name, const bool closeAfterFail)
 {
+   if (name == "") PrintError("Empty argument was passed for input file check");
+   
    std::ifstream file(name.c_str());
    if(!file.is_open()) 
    {
@@ -48,6 +50,7 @@ bool CheckInputFile(const std::string& name, const bool closeAfterFail)
 //Checks if the file can be created
 void CheckOutputFile(const std::string& name, const std::ios_base::openmode openmode)
 {
+   if (name == "") PrintError("Empty argument was passed for output file check");
    std::ofstream file(name.c_str(), openmode);
    if(!file.is_open()) PrintError("File " + name + " cannot be created");
 }
