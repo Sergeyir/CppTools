@@ -87,27 +87,6 @@ void Box::AddEntry(const std::string& entryName, const unsigned long entryValue)
    CheckEntry();
 }
 
-void Box::AddEntry(const std::string& entryName, const signed int entryValue)
-{
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
-}
-
-void Box::AddEntry(const std::string& entryName, const signed short entryValue)
-{
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
-}
-
-void Box::AddEntry(const std::string& entryName, const signed long entryValue)
-{
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
-}
-
 void Box::AddEntry(const std::string& entryName, const std::string& entryValue)
 {
    entryNames.push_back(entryName);
