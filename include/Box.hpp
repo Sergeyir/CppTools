@@ -32,6 +32,14 @@ class Box
    void AddEntry(const std::string& entryName, const double entryValue, 
                  const unsigned int precision = 2);
    void AddEntry(const std::string& entryName, const int entryValue);
+   void AddEntry(const std::string& entryName, const short entryValue);
+   void AddEntry(const std::string& entryName, const long entryValue);
+   void AddEntry(const std::string& entryName, const unsigned int entryValue);
+   void AddEntry(const std::string& entryName, const unsigned short entryValue);
+   void AddEntry(const std::string& entryName, const unsigned long entryValue);
+   void AddEntry(const std::string& entryName, const signed int entryValue);
+   void AddEntry(const std::string& entryName, const signed short entryValue);
+   void AddEntry(const std::string& entryName, const signed long entryValue);
    void AddEntry(const std::string& entryName, const std::string& entryValue);
    void AddEntry(const std::string& entryName, const bool entryValue);
    void Print(const std::string& titleColor = OutputColor::GREEN);
