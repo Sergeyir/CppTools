@@ -118,16 +118,18 @@ void Box::Print(const std::string& titleColor)
       PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", width);
    }
    
-   PrintSimpleSeparator(" ╚", "═", "╝", width);
-   
+   PrintSimpleSeparator(" ╚", "═", "╝", width);   
+}
+
+void Box::Clear()
+{
    entryNames.clear();
    entryValues.clear();
 }
 
 Box::~Box()
 {
-   entryNames.clear();
-   entryValues.clear();
+   Clear();
 }
 
 void Box::CheckEntry()

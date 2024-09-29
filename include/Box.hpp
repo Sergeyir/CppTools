@@ -40,6 +40,7 @@ class Box
    void AddEntry(const std::string& entryName, const std::string& entryValue);
    void AddEntry(const std::string& entryName, const bool entryValue);
    void Print(const std::string& titleColor = OutputColor::GREEN);
+   void Clear();
    
    virtual ~Box();
    
