@@ -22,14 +22,16 @@
 //Print an error with message
 void PrintError(const std::string& message)
 {
-   std::cerr << OutputColor::BOLD_RED << " ERROR: " << OutputColor::WHITE << message << std::endl;
+   std::cerr << OutputColor::BOLD_RED << " ERROR: " << OutputColor::WHITE 
+             << message << OutputColor::RESET << std::endl;
    exit(1);
 }
 
 //Print warning with message
 void PrintWarning(const std::string& message)
 {
-   std::cerr << OutputColor::BOLD_MAGENTA << " WARNING: " << OutputColor::WHITE << message << std::endl;
+   std::cerr << OutputColor::BOLD_MAGENTA << " WARNING: " << OutputColor::WHITE 
+             << message << OutputColor::RESET << std::endl;
 }
 
 //Checks if the file exists
