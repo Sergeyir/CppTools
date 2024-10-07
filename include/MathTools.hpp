@@ -33,8 +33,8 @@ double Maximum(Ts... args)
 template <typename T> 
 T VecMaximum(std::vector<T> args)
 {
-   double result = args[0];
-   for (double val : args) if (val > result) result = val;
+   T result = args[0];
+   for (T val : args) if (val > result) result = val;
    return result;
 }
 
@@ -51,8 +51,8 @@ double Minimum(Ts... args)
 template <typename T> 
 T VecMinimum(std::vector<T> args)
 {
-   double result = args[0];
-   for (double val : args) if (val < result) result = val;
+   T result = args[0];
+   for (T val : args) if (val < result) result = val;
    return result;
 }
 
@@ -67,12 +67,11 @@ double Average(Ts... args)
 }
 
 template <typename... Ts> 
-double StandardError(Ts... args)
+double StandardError(Ts... args, double average)
 {
    constexpr int size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
    double result = 0.;
-   const double average = Average(args);
    for (double val : entries) result += (val - average)*(val - average);
    return result/sqrt(static_cast<double>(size*(size-1)));
 }
@@ -81,16 +80,16 @@ template <typename T>
 double VecAverage(std::vector<T> entries)
 {
    double result = 0.;
-
-   for (val : entries) result += static_cast<double>(val);
+   for (T val : entries) result += static_cast<double>(val);
    return result/static_cast<double>(entries.size());
 }
 
 template <typename T> 
-double VecStandardError(std::vector<T> entries, const T average)
+double VecStandardError(std::vector<T> entries, const double average)
 {
    double result = 0.;
-   for (val : entries) result += static_cast<double>((average - val)*(average - val));
+   for (T val : entries) result += 
+      (average - static_cast<double>(val))*(average - static_cast<double>(val));
    return result/sqrt(static_cast<double>(entries.size()*(entries.size() - 1)));
 }
 
@@ -109,7 +108,7 @@ template<typename T>
 double VecErrPropagation(std::vector<T> args)
 {
    double prod = 0; //product
-   for (double var : args) prod += var*var;
+   for (T var : args) prod += static_cast<double>(var)*static_cast<double>(var);
    return sqrt(prod);
 }
 
@@ -127,7 +126,7 @@ template <typename T>
 double VecProduct(std::vector<T> args)
 {
    double result = 1.;
-   for (double val : args) result *= val;
+   for (T val : args) result *= static_cast<double>(val);
    return result;
 }
 
