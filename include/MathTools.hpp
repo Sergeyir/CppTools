@@ -31,7 +31,7 @@ double Maximum(Ts... args)
 }
 
 template <typename T> 
-T Maximum(std::vector<T> args)
+T VecMaximum(std::vector<T> args)
 {
    double result = args[0];
    for (double val : args) if (val > result) result = val;
@@ -49,7 +49,7 @@ double Minimum(Ts... args)
 }
 
 template <typename T> 
-T Minimum(std::vector<T> args)
+T VecMinimum(std::vector<T> args)
 {
    double result = args[0];
    for (double val : args) if (val < result) result = val;
@@ -67,18 +67,6 @@ double Average(Ts... args)
 }
 
 template <typename... Ts> 
-double AverageAndStandardError(Ts... args, double &error)
-{
-   constexpr int size = sizeof...(args);
-   double entries[size] = {static_cast<double>(args)...};
-   double result = 0.;
-   for (double val : entries) result += val;
-   for (double val : entries) error += (val - average)*(val - average);
-   error /= sqrt(static_cast<double>(size*(size-1)))
-   return result/static_cast<double>(size);
-}
-
-template <typename... Ts> 
 double StandardError(Ts... args)
 {
    constexpr int size = sizeof...(args);
@@ -90,7 +78,7 @@ double StandardError(Ts... args)
 }
 
 template <typename T> 
-double Average(std::vector<T> entries)
+double VecAverage(std::vector<T> entries)
 {
    double result = 0.;
 
@@ -99,10 +87,10 @@ double Average(std::vector<T> entries)
 }
 
 template <typename T> 
-double StandardError(std::vector<T> entries, const T average)
+double VecStandardError(std::vector<T> entries, const T average)
 {
    double result = 0.;
-   for (val : entries) result += static_cast<double>((averate - val)*(averate - val));
+   for (val : entries) result += static_cast<double>((average - val)*(average - val));
    return result/sqrt(static_cast<double>(entries.size()*(entries.size() - 1)));
 }
 
@@ -118,7 +106,7 @@ double ErrPropagation(Ts... args)
 }
 
 template<typename T>
-double ErrPropagation(std::vector<T> args)
+double VecErrPropagation(std::vector<T> args)
 {
    double prod = 0; //product
    for (double var : args) prod += var*var;
@@ -136,7 +124,7 @@ double Product(Ts... args)
 }
 
 template <typename T> 
-double Product(std::vector<T> args)
+double VecProduct(std::vector<T> args)
 {
    double result = 1.;
    for (double val : args) result *= val;
