@@ -24,6 +24,7 @@
 
 void PrintError(const std::string& message);
 void PrintWarning(const std::string& message);
+bool FileExists(const std::string& name);
 bool CheckInputFile(const std::string& name, const bool closeAfterFail = true);
 void CheckOutputFile(const std::string& name, 
                      const std::ios_base::openmode openmode = std::ios::out);

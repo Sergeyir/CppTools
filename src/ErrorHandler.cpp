@@ -19,7 +19,7 @@
 
 #include "../include/ErrorHandler.hpp"
 
-//Print an error with message
+// Print an error with message
 void PrintError(const std::string& message)
 {
    std::cerr << OutputColor::BOLD_RED << " ERROR: " << OutputColor::WHITE 
@@ -27,20 +27,26 @@ void PrintError(const std::string& message)
    exit(1);
 }
 
-//Print warning with message
+// Print warning with message
 void PrintWarning(const std::string& message)
 {
    std::cerr << OutputColor::BOLD_MAGENTA << " WARNING: " << OutputColor::WHITE 
              << message << OutputColor::RESET << std::endl;
 }
 
-//Checks if the file exists
+bool FileExists(const std::string& name)
+{
+   if (name == "") PrintError("Empty argument was passed for file check");
+   std::ifstream file(name.c_str());
+   
+   if(!file.is_open()) return false;
+   return true;
+}
+
+// Prints error or warning if file doesn't exist
 bool CheckInputFile(const std::string& name, const bool closeAfterFail)
 {
-   if (name == "") PrintError("Empty argument was passed for input file check");
-   
-   std::ifstream file(name.c_str());
-   if(!file.is_open()) 
+   if (!FileExists(name))
    {
       if (closeAfterFail) PrintError("File " + name + " not found");
       else PrintWarning("File " + name + " not found");
@@ -49,7 +55,7 @@ bool CheckInputFile(const std::string& name, const bool closeAfterFail)
    return true;
 }
 
-//Checks if the file can be created
+// Checks if the file can be created
 void CheckOutputFile(const std::string& name, const std::ios_base::openmode openmode)
 {
    if (name == "") PrintError("Empty argument was passed for output file check");
