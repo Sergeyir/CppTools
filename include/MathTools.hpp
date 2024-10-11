@@ -67,12 +67,14 @@ double Average(Ts... args)
 }
 
 template <typename... Ts> 
-double StandardError(Ts... args, double average)
+double StandardError(Ts... args)
 {
    constexpr int size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
    double result = 0.;
-   for (double val : entries) result += (val - average)*(val - average);
+   for (int i = 1; i < entries.size(); i++)
+   {
+      result += (entries[i] - entries[0])*(entries[i] - entries[0]);
    return result/sqrt(static_cast<double>(size*(size-1)));
 }
 
