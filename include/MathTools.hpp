@@ -75,6 +75,7 @@ double StandardError(Ts... args)
    for (int i = 1; i < entries.size(); i++)
    {
       result += (entries[i] - entries[0])*(entries[i] - entries[0]);
+   }
    return result/sqrt(static_cast<double>(size*(size-1)));
 }
 
