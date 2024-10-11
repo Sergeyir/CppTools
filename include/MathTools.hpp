@@ -72,7 +72,7 @@ double StandardError(Ts... args)
    constexpr int size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
    double result = 0.;
-   for (int i = 1; i < entries.size(); i++)
+   for (int i = 1; i < size; i++)
    {
       result += (entries[i] - entries[0])*(entries[i] - entries[0]);
    }
