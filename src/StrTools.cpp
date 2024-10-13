@@ -44,6 +44,11 @@ std::string RemoveObsoletePrecision(std::string str)
    return str;
 }
 
+std::string RemoveObsoletePrecision(const double value)
+{
+   return RemoveObsoletePrecision(std::to_string(value));
+}
+
 std::string DtoStr(const double val, const int precision)
 {
    std::stringstream ssval;
