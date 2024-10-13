@@ -34,6 +34,16 @@ int utf8_strlen(const std::string& str)
    return length;
 }
 
+std::string RemoveObsoletePrecision(std::string str)
+{
+   for (unsigned long i = str.size()-1; i > str.find("."); i--)
+   {
+      if (str[i] == '0') str.erase(i);
+      else break;
+   }
+   return str;
+}
+
 std::string DtoStr(const double val, const int precision)
 {
    std::stringstream ssval;

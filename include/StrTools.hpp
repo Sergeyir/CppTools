@@ -23,6 +23,7 @@
 
 int utf8_strlen(const std::string& str);
 std::string DtoStr(const double val, const int precision = 2);
+std::string RemoveObsoletePrecision(std::string str);
 std::string BtoStr(const bool val);
 
 #endif /*STR_TOOLS_HPP*/
