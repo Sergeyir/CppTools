@@ -41,6 +41,8 @@ std::string RemoveObsoletePrecision(std::string str)
       if (str[i] == '0') str.erase(i);
       else break;
    }
+   // removes '.' if no numbers remain after it
+   if (str.size() - 1 == str.find(".")) str.erase(str.size() - 1); 
    return str;
 }
 
