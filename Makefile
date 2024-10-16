@@ -23,23 +23,17 @@ endif
 
 # Rules without physical targets (secondary expansion for specific rules).
 .SECONDEXPANSION:
-.PHONY: all clean
+.PHONY: all clean ErrorHandler StrTools IOTools Box
 
 .SILENT:
 
-all: lib/ErrorHandler.o \
-	  lib/StrTools.o \
-	  lib/IOTools.o \
-	  lib/Box.o \
-	  lib/ErrorHandler.so \
-	  lib/StrTools.so \
-	  lib/IOTools.so \
-	  lib/Box.so \
-	  lib/libErrorHandler.a \
-	  lib/libStrTools.a \
-	  lib/libIOTools.a \
-	  lib/libBox.a
+all: ErrorHandler StrTools IOTools Box
 	@echo "All done"
+
+ErrorHandler: lib/ErrorHandler.o lib/ErrorHandler.so lib/libErrorHandler.a
+StrTools: lib/StrTools.o lib/StrTools.so lib/libStrTools.a
+IOTools: lib/IOTools.o lib/IOTools.so lib/libIOTools.a
+Box: lib/Box.o lib/Box.so lib/libBox.a
 
 lib: 
 	mkdir -p $@
