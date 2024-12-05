@@ -26,8 +26,8 @@ class Box
 {
    public:
 
-   Box(const int boxWidth = -1);
-   Box(const std::string& boxName, const int boxWidth = -1);
+   Box();
+   Box(const std::string& boxName);
    void SetName(const std::string& boxName);
    void AddEntry(const std::string& entryName, const double entryValue, 
                  const unsigned int precision = 2);
@@ -48,8 +48,6 @@ class Box
    
    std::string name; 
    std::vector<std::string> entryNames, entryValues;
-   unsigned short width;
-   void CheckEntry();
 };
 
 #endif /*BOX_HPP*/

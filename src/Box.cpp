@@ -19,20 +19,14 @@
 
 #include "../include/Box.hpp"
 
-Box::Box(const int boxWidth) 
-{
-   if (boxWidth > 0) width = boxWidth;
-   else width = -1;
-}
+Box::Box() {}
 
-Box::Box(const std::string& boxName, const int boxWidth)
+Box::Box(const std::string& boxName) 
 {
    name = boxName;
-   if (boxWidth > 0) width = boxWidth;
-   else width = -1;
 }
 
-void Box::SetName(const std::string& boxName)
+void Box::SetName(const std::string& boxName) 
 {
    name = boxName;
 }
@@ -42,63 +36,54 @@ void Box::AddEntry(const std::string& entryName, const double entryValue,
 {
    entryNames.push_back(entryName);
    entryValues.push_back(DtoStr(entryValue, precision));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const int entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const short entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const long entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const unsigned int entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const unsigned short entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const unsigned long entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(std::to_string(entryValue));
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const std::string& entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(entryValue);
-   CheckEntry();
 }
 
 void Box::AddEntry(const std::string& entryName, const bool entryValue)
 {
    entryNames.push_back(entryName);
    entryValues.push_back(BtoStr(entryValue));
-   CheckEntry();
 }
 
 void Box::Print(const std::string& titleColor)
@@ -109,19 +94,18 @@ void Box::Print(const std::string& titleColor)
       return;
    }
 
-   int currentWidthToPrint = width;
-   if (width < 0) currentWidthToPrint = GetTerminalWidth() - 1;
+   const unsigned short width = GetTerminalWidth() - 1;
    
-   PrintSimpleSeparator(" ╔", "═", "╗", currentWidthToPrint);
-   PrintSeparator(name, titleColor, " ║", " ", "║", currentWidthToPrint);
-   PrintSimpleSeparator(" ╟", "─", "╢", currentWidthToPrint);
+   PrintSimpleSeparator(" ╔", "═", "╗", width);
+   PrintSeparator(name, titleColor, " ║", " ", "║", width);
+   PrintSimpleSeparator(" ╟", "─", "╢", width);
    
    for (long unsigned int i = 0; i < entryNames.size(); i++)
    {
-      PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", currentWidthToPrint);
+      PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", width);
    }
    
-   PrintSimpleSeparator(" ╚", "═", "╝", currentWidthToPrint);   
+   PrintSimpleSeparator(" ╚", "═", "╝", width);   
 }
 
 void Box::Clear()
@@ -133,16 +117,6 @@ void Box::Clear()
 Box::~Box()
 {
    Clear();
-}
-
-void Box::CheckEntry()
-{
-   if (static_cast<int>(entryNames.back().length() + entryValues.back().length()) > width - 2)
-   {
-      PrintWarning("Box entry " + entryNames.back() + " is too long: it will not be printed");
-      entryNames.pop_back();
-      entryValues.pop_back();
-   }
 }
 
 #endif /*BOX_CPP*/
