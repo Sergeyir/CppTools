@@ -22,14 +22,14 @@
 Box::Box(const int boxWidth) 
 {
    if (boxWidth > 0) width = boxWidth;
-   else width = GetTerminalWidth() - 1;
+   else width = -1;
 }
 
 Box::Box(const std::string& boxName, const int boxWidth)
 {
    name = boxName;
    if (boxWidth > 0) width = boxWidth;
-   else width = GetTerminalWidth() - 1;
+   else width = -1;
 }
 
 void Box::SetName(const std::string& boxName)
@@ -108,17 +108,20 @@ void Box::Print(const std::string& titleColor)
       PrintWarning("Box cannot be printed: number of entries is 0");
       return;
    }
+
+   int currentWidthToPrint = width;
+   if (width < 0) currentWidthToPrint = GetTerminalWidth() - 1;
    
-   PrintSimpleSeparator(" ╔", "═", "╗", width);
-   PrintSeparator(name, titleColor, " ║", " ", "║", width);
-   PrintSimpleSeparator(" ╟", "─", "╢", width);
+   PrintSimpleSeparator(" ╔", "═", "╗", currentWidthToPrint);
+   PrintSeparator(name, titleColor, " ║", " ", "║", currentWidthToPrint);
+   PrintSimpleSeparator(" ╟", "─", "╢", currentWidthToPrint);
    
    for (long unsigned int i = 0; i < entryNames.size(); i++)
    {
-      PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", width);
+      PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", currentWidthToPrint);
    }
    
-   PrintSimpleSeparator(" ╚", "═", "╝", width);   
+   PrintSimpleSeparator(" ╚", "═", "╝", currentWidthToPrint);   
 }
 
 void Box::Clear()
