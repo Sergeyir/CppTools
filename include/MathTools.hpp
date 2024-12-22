@@ -31,7 +31,7 @@ double Maximum(Ts... args)
 }
 
 template <typename T> 
-T VecMaximum(std::vector<T> args)
+T VecMaximum(const std::vector<T>& args)
 {
    T result = args[0];
    for (T val : args) if (val > result) result = val;
@@ -49,7 +49,7 @@ double Minimum(Ts... args)
 }
 
 template <typename T> 
-T VecMinimum(std::vector<T> args)
+T VecMinimum(const std::vector<T>& args)
 {
    T result = args[0];
    for (T val : args) if (val < result) result = val;
@@ -80,7 +80,7 @@ double StandardError(Ts... args)
 }
 
 template <typename T> 
-double VecAverage(std::vector<T> entries)
+double VecAverage(const std::vector<T>& entries)
 {
    double result = 0.;
    for (T val : entries) result += static_cast<double>(val);
@@ -88,7 +88,7 @@ double VecAverage(std::vector<T> entries)
 }
 
 template <typename T> 
-double VecStandardError(std::vector<T> entries, const double average)
+double VecStandardError(const std::vector<T>& entries, const double average)
 {
    double result = 0.;
    for (T val : entries) result += 
@@ -108,7 +108,7 @@ double ErrPropagation(Ts... args)
 }
 
 template<typename T>
-double VecErrPropagation(std::vector<T> args)
+double VecErrPropagation(const std::vector<T>& args)
 {
    double prod = 0; //product
    for (T var : args) prod += static_cast<double>(var)*static_cast<double>(var);
@@ -126,7 +126,7 @@ double Product(Ts... args)
 }
 
 template <typename T> 
-double VecProduct(std::vector<T> args)
+double VecProduct(const std::vector<T>& args)
 {
    double result = 1.;
    for (T val : args) result *= static_cast<double>(val);
@@ -153,7 +153,7 @@ double RMS(Ts... args)
 	return sqrt(rms/static_cast<double>(size));
 }
 
-double RMSv(std::vector<double> vec)
+double RMSv(const std::vector<double>& vec)
 {
 	double rms = 0.;
 	for (double var : vec) rms += var*var;
