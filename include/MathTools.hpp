@@ -143,4 +143,21 @@ double AtLeast1Prob(Ts... args)
    return 1. - prod;
 }
 
+template<typename... Ts>
+double RMS(Ts... args)
+{
+	constexpr int size = sizeof...(args);
+	double entries[size] = {static_cast<double>(args)...};
+	double rms = 0;
+	for (double var : entries) rms += var*var;
+	return sqrt(rms/static_cast<double>(size));
+}
+
+double RMSv(std::vector<double> vec)
+{
+	double rms = 0.;
+	for (double var : vec) rms += var*var;
+	return sqrt(rms/static_cast<double>(vec.size()));
+}
+
 #endif /*MATH_TOOLS_HPP*/
