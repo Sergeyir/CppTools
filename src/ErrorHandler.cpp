@@ -22,14 +22,14 @@
 // Print an error with message
 void PrintError(const std::string& message)
 {
-   std::cerr << ErrorHandler::ERROR << message << OutputColor::RESET << std::endl;
+   std::cerr << ErrorHandlerSnippet::ERROR << message << OutputColor::RESET << std::endl;
    exit(1);
 }
 
 // Print warning with message
 void PrintWarning(const std::string& message)
 {
-   std::cerr << ErrorHandler::WARNING << message << OutputColor::RESET << std::endl;
+   std::cerr << ErrorHandlerSnippet::WARNING << message << OutputColor::RESET << std::endl;
 }
 
 bool FileExists(const std::string& name)

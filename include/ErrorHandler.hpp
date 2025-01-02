@@ -22,7 +22,7 @@
 
 #include "OutputColor.hpp"
 
-namespace ErrorHandler
+namespace ErrorHandlerSnippet
 {
    const std::string ERROR = OutputColor::RED + " ERROR: " + OutputColor::WHITE;
    const std::string WARNING = OutputColor::MAGENTA + " WARNING: " + OutputColor::RESET;
