@@ -38,7 +38,7 @@ double *ReadFileIntoArray(const std::string& fileName, const int size)
 
 void PrintInfo(const std::string& message)
 {
-   std::cout << OutputColor::GREEN << " INFO: " << OutputColor::RESET << message << std::endl;
+   std::cout << ErrorHandler::INFO << message << std::endl;
 }
 
 void PrintSimpleSeparator(const std::string& leftEdge, const std::string& body, 

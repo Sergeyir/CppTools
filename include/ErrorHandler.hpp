@@ -22,6 +22,13 @@
 
 #include "OutputColor.hpp"
 
+namespace ErrorHandler
+{
+   const std::string ERROR = OutputColor::RED + " ERROR: " + OutputColor::WHITE;
+   const std::string WARNING = OutputColor::MAGENTA + " WARNING: " + OutputColor::RESET;
+   const std::string INFO = OutputColor::GREEN + " INFO: " + OutputColor::RESET;
+}
+
 void PrintError(const std::string& message);
 void PrintWarning(const std::string& message);
 bool FileExists(const std::string& name);

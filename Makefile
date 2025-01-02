@@ -30,10 +30,10 @@ endif
 all: ErrorHandler StrTools IOTools Box
 	@echo "All done"
 
-ErrorHandler: lib/ErrorHandler.o lib/ErrorHandler.so lib/libErrorHandler.a
-StrTools: lib/StrTools.o lib/StrTools.so lib/libStrTools.a
-IOTools: lib/IOTools.o lib/IOTools.so lib/libIOTools.a
-Box: lib/Box.o lib/Box.so lib/libBox.a
+ErrorHandler: lib/ErrorHandler.o lib/libErrorHandler.so
+StrTools: lib/StrTools.o lib/libStrTools.so
+IOTools: lib/IOTools.o lib/libIOTools.so
+Box: lib/Box.o lib/libBox.so
 
 lib: 
 	mkdir -p $@
@@ -46,25 +46,19 @@ lib/StrTools.o: src/StrTools.cpp | lib
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -o $@
 
-lib/IOTools.o: src/IOTools.cpp \
-					lib/ErrorHandler.o \
-					lib/StrTools.o
+lib/IOTools.o: src/IOTools.cpp ErrorHandler StrTools
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -I./include -o $@ \
-	-L lib -lErrorHandler -lStrTools
+	-L./lib -Wl,-rpath,./lib -lErrorHandler -lStrTools
 
-lib/Box.o: src/Box.cpp lib/IOTools.o
+lib/Box.o: src/Box.cpp IOTools
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -I./include -o $@ \
-	-L lib -lErrorHandler -lStrTools -lIOTools
+	-L./lib -Wl,-rpath,./lib -lErrorHandler -lStrTools -lIOTools
 
-lib/%.so: lib/%.o
+lib/lib%.so: lib/%.o
 	@$(ECHO) Building CXX shared library $@
 	$(CXX) -shared -o $@ $<
-
-lib/lib%.a: lib/%.o
-	@$(ECHO) Building CXX static library $@
-	ar rcs $@ $<
 
 clean: 
 	@echo Cleaning
