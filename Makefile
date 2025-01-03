@@ -30,10 +30,10 @@ endif
 all: ErrorHandler StrTools IOTools Box
 	@echo "All done"
 
-ErrorHandler: lib/ErrorHandler.o lib/libErrorHandler.so
-StrTools: lib/StrTools.o lib/libStrTools.so
-IOTools: lib/IOTools.o lib/libIOTools.so
-Box: lib/Box.o lib/libBox.so
+ErrorHandler: lib/libErrorHandler.so
+StrTools: lib/libStrTools.so
+IOTools: lib/libIOTools.so
+Box: lib/libBox.so
 
 lib: 
 	mkdir -p $@
