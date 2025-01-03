@@ -29,16 +29,26 @@ class Box
    Box();
    Box(const std::string& boxName);
    void SetName(const std::string& boxName);
-   void AddEntry(const std::string& entryName, const double entryValue, 
+   void AddEntry(const std::string& name, const double value, 
                  const unsigned int precision = 2);
-   void AddEntry(const std::string& entryName, const int entryValue);
-   void AddEntry(const std::string& entryName, const short entryValue);
-   void AddEntry(const std::string& entryName, const long entryValue);
-   void AddEntry(const std::string& entryName, const unsigned int entryValue);
-   void AddEntry(const std::string& entryName, const unsigned short entryValue);
-   void AddEntry(const std::string& entryName, const unsigned long entryValue);
-   void AddEntry(const std::string& entryName, const std::string& entryValue);
-   void AddEntry(const std::string& entryName, const bool entryValue);
+   void AddEntry(const std::string& name, const int value);
+   void AddEntry(const std::string& name, const short value);
+   void AddEntry(const std::string& name, const long value);
+   void AddEntry(const std::string& name, const unsigned int value);
+   void AddEntry(const std::string& name, const unsigned short value);
+   void AddEntry(const std::string& name, const unsigned long value);
+   void AddEntry(const std::string& name, const std::string& value);
+   void AddEntry(const std::string& name, const bool value);
+   void AddEntry(const std::string& name, const std::vector<double>& values,
+                 const unsigned int precision = 2);
+   void AddEntry(const std::string& name, const std::vector<int>& values);
+   void AddEntry(const std::string& name, const std::vector<short>& values);
+   void AddEntry(const std::string& name, const std::vector<long>& values);
+   void AddEntry(const std::string& name, const std::vector<unsigned int>& values);
+   void AddEntry(const std::string& name, const std::vector<unsigned short>& values);
+   void AddEntry(const std::string& name, const std::vector<unsigned long>& values);
+   void AddEntry(const std::string& name, const std::vector<std::string>& values);
+   void AddEntry(const std::string& name, const std::vector<bool>& values);
    void Print(const std::string& titleColor = OutputColor::GREEN);
    void Clear();
    

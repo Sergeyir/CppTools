@@ -46,12 +46,12 @@ lib/StrTools.o: src/StrTools.cpp | lib
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -o $@
 
-lib/IOTools.o: src/IOTools.cpp ErrorHandler StrTools
+lib/IOTools.o: src/IOTools.cpp | ErrorHandler StrTools
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -I./include -o $@ \
 	-L./lib -Wl,-rpath,./lib -lErrorHandler -lStrTools
 
-lib/Box.o: src/Box.cpp IOTools
+lib/Box.o: src/Box.cpp | IOTools
 	@$(ECHO) Building CXX object $@
 	$(CXX) $< $(CXX_COMMON_LIB) -I./include -o $@ \
 	-L./lib -Wl,-rpath,./lib -lErrorHandler -lStrTools -lIOTools

@@ -31,59 +31,159 @@ void Box::SetName(const std::string& boxName)
    name = boxName;
 }
 
-void Box::AddEntry(const std::string& entryName, const double entryValue, 
+void Box::AddEntry(const std::string& name, const double value, 
                    const unsigned int precision)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(DtoStr(entryValue, precision));
+   entryNames.push_back(name);
+   entryValues.push_back(DtoStr(value, precision));
 }
 
-void Box::AddEntry(const std::string& entryName, const int entryValue)
+void Box::AddEntry(const std::string& name, const int value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const short entryValue)
+void Box::AddEntry(const std::string& name, const short value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const long entryValue)
+void Box::AddEntry(const std::string& name, const long value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const unsigned int entryValue)
+void Box::AddEntry(const std::string& name, const unsigned int value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const unsigned short entryValue)
+void Box::AddEntry(const std::string& name, const unsigned short value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const unsigned long entryValue)
+void Box::AddEntry(const std::string& name, const unsigned long value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(std::to_string(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& entryName, const std::string& entryValue)
+void Box::AddEntry(const std::string& name, const std::string& value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(entryValue);
+   entryNames.push_back(name);
+   entryValues.push_back(value);
 }
 
-void Box::AddEntry(const std::string& entryName, const bool entryValue)
+void Box::AddEntry(const std::string& name, const bool value)
 {
-   entryNames.push_back(entryName);
-   entryValues.push_back(BtoStr(entryValue));
+   entryNames.push_back(name);
+   entryValues.push_back(BtoStr(value));
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<double>& values, 
+                   const unsigned int precision)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += DtoStr(values[i], precision) + ", ";
+   }
+   entryValues.back() += DtoStr(values.back(), precision);
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<int>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<short>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<long>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<unsigned int>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<unsigned short>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<unsigned long>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += std::to_string(values[i]) + ", ";
+   }
+   entryValues.back() += std::to_string(values.back());
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<std::string>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += values[i] + ", ";
+   }
+   entryValues.back() += values.back();
+}
+
+void Box::AddEntry(const std::string& name, const std::vector<bool>& values)
+{
+   entryNames.push_back(name);
+   entryValues.emplace_back("");
+   for (unsigned long i = 0; i < values.size() - 1; i++)
+   {
+      entryValues.back() += BtoStr(values[i]) + ", ";
+   }
+   entryValues.back() += BtoStr(values.back());
 }
 
 void Box::Print(const std::string& titleColor)
