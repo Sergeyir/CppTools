@@ -20,10 +20,10 @@
 #include "../include/ErrorHandler.hpp"
 
 // Print an error with message
-void PrintError(const std::string& message)
+void PrintError(const std::string& message, const bool exitProgram)
 {
    std::cerr << ErrorHandlerSnippet::ERROR << message << OutputColor::RESET << std::endl;
-   exit(1);
+   if (exitProgram) exit(1);
 }
 
 // Print warning with message

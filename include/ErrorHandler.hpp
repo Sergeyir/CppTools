@@ -29,7 +29,7 @@ namespace ErrorHandlerSnippet
    const std::string INFO = OutputColor::GREEN + " INFO: " + OutputColor::RESET;
 }
 
-void PrintError(const std::string& message);
+void PrintError(const std::string& message, const bool exitProgram = true);
 void PrintWarning(const std::string& message);
 bool FileExists(const std::string& name);
 bool CheckInputFile(const std::string& name, const bool closeAfterFail = true);
