@@ -1,3 +1,9 @@
+/** 
+ *  @file   OutputColor.hpp 
+ *  @brief  Aliases for colors to use in output in terminal
+ *  @author Sergei Antsupov
+ **/
+
 #ifndef OUTPUT_COLOR
 #define OUTPUT_COLOR
 

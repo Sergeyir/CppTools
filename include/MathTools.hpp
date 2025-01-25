@@ -1,18 +1,8 @@
-// $HEADER$
-//------------------------------------------------------------------------------------------------
-//                                       Useful math functions
-//------------------------------------------------------------------------------------------------
-// MathTools
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of variadic functions for simple math calculations
+/** 
+ *  @file   MathTools.hpp 
+ *  @brief  Useful math functions that can be used in any cpp application. In order to use these functions MathTools.hpp needs to be included.
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
 #ifndef MATH_TOOLS_HPP
 #define MATH_TOOLS_HPP
@@ -20,144 +10,264 @@
 #include <vector>
 #include <cmath>
 
+/*! @brief Returns maximum value from C array
+*
+* Can be used with std::vector or std::array as such: MaximumFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Maximum value
+*/
+template <typename T> 
+T MaximumFromCArray(const T *entries, const unsigned long n)
+{
+   T result = entries[0];
+   for (unsigned long i = 1; i < n; i++)
+   {
+      if (entries[i] > result) result = entries[i];
+   }
+   return result;
+}
+
+/*! @brief Returns maximum value from parameter pack
+*
+* @param[in] args Parameter pack
+* @param[out] result Maximum value
+*/
 template <typename... Ts> 
 double Maximum(Ts... args)
 {
-   constexpr int size = sizeof...(args);
+   constexpr unsigned long size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
-   double result = entries[0];
-   for (double val : entries) if (val > result) result = val;
-   return result;
+   return MaximumFromCArray(entries, size);
 }
 
+/*! @brief Returns minimum value from C array
+*
+* Can be used with std::vector or std::array as such: MinimumArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Minimum value
+*/
 template <typename T> 
-T VecMaximum(const std::vector<T>& args)
+T MinimumFromCArray(const T *entries, const unsigned long n)
 {
-   T result = args[0];
-   for (T val : args) if (val > result) result = val;
+   T result = entries[0];
+   for (unsigned long i = 1; i < n; i++)
+   {
+      if (entries[i] < result) result = entries[i];
+   }
    return result;
 }
 
+/*! @brief Returns minimum value from parameter pack.
+*
+* @param[in] args Parameter pack
+* @param[out] result Minimum value
+*/
 template <typename... Ts> 
 double Minimum(Ts... args)
 {
-   constexpr int size = sizeof...(args);
+   constexpr unsigned long size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
-   double result = entries[0];
-   for (double val : entries) if (val < result) result = val;
-   return result;
+   return MinimumFromCArray(entries, size);
 }
 
+/*! @brief Returns average value from C array
+*
+* Can be used with std::vector or std::array as such: AverageFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Average value
+*/
 template <typename T> 
-T VecMinimum(const std::vector<T>& args)
+T AverageFromCArray(const T *entries, const unsigned long n)
 {
-   T result = args[0];
-   for (T val : args) if (val < result) result = val;
-   return result;
+   T result = 0;
+   for (unsigned long i = 0; i < n; i++)
+   {
+      result += entries[i];
+   }
+   return result/static_cast<T>(n);
 }
 
+/*! @brief Returns average value from parameter pack.
+*
+* @param[in] args Parameter pack
+* @param[out] result Average value
+*/
 template <typename... Ts> 
 double Average(Ts... args)
 {
-   constexpr int size = sizeof...(args);
+   constexpr unsigned long size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
-   double result = 0.;
-   for (double val : entries) result += val;
-   return result/static_cast<double>(size);
+   return AverageFromCArray(entries, size);
 }
 
-template <typename... Ts> 
-double StandardError(Ts... args)
+/*! @brief Returns standard error value from C array
+*
+* Can be used with std::vector or std::array as such: StandardErrorFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Standard error value
+*/
+template <typename T> 
+double StandardErrorFromCArray(const T *entries, const unsigned long n, const double average)
 {
-   constexpr int size = sizeof...(args);
-   double entries[size] = {static_cast<double>(args)...};
-   double result = 0.;
-   for (int i = 1; i < size; i++)
+   T result = 0;
+   for (unsigned long i = 0; i < n; i++)
    {
-      result += (entries[i] - entries[0])*(entries[i] - entries[0]);
+      result += (average - static_cast<double>(entries[i]))*
+                (average - static_cast<double>(entries[i]));
    }
-   return result/sqrt(static_cast<double>(size*(size-1)));
+   return result/sqrt(static_cast<double>(n*(n - 1)));
 }
 
-template <typename T> 
-double VecAverage(const std::vector<T>& entries)
+/*! @brief Returns average value from parameter pack.
+*
+* @param[in] args Parameter pack
+* @param[in] average Average value from the parameter pack
+* @param[out] result Standard error value
+*/
+template <typename... Ts> 
+double StandardError(Ts... args, const double average)
 {
-   double result = 0.;
-   for (T val : entries) result += static_cast<double>(val);
-   return result/static_cast<double>(entries.size());
-}
-
-template <typename T> 
-double VecStandardError(const std::vector<T>& entries, const double average)
-{
-   double result = 0.;
-   for (T val : entries) result += 
-      (average - static_cast<double>(val))*(average - static_cast<double>(val));
-   return result/sqrt(static_cast<double>(entries.size()*(entries.size() - 1)));
-}
-
-//uncertainty propagation
-template<typename... Ts>
-double ErrPropagation(Ts... args)
-{
-   constexpr int size = sizeof...(args);
+   constexpr unsigned long size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
-   double prod = 0;
-   for (double var : entries) prod += var*var;
-   return sqrt(prod);
+   return StandardErrorFromCArray(entries, size, average);
 }
 
-template<typename T>
-double VecErrPropagation(const std::vector<T>& args)
+/*! @brief Returns uncertainty that is the propagated uncertainty from all uncertainties from C array
+*
+* Uncertainties are relative. Can be used with std::vector or std::array as such: StandardErrorFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array (contains uncertainties)
+* @param[in] n Size of C array
+* @param[out] result Propagated uncertainty
+*/
+template <typename T> 
+double UncertaintyPropFromCArray(const T *entries, const unsigned long n)
 {
-   double prod = 0; //product
-   for (T var : args) prod += static_cast<double>(var)*static_cast<double>(var);
-   return sqrt(prod);
+   double result = 0;
+   for (unsigned long i = 0; i < n; i++)
+   {
+      result += static_cast<double>(entries[i]*entries[i]);
+   }
+   return sqrt(result);
 }
 
+/*! @brief Returns uncertainty that is the propagated uncertainty from all uncertainties from parameter pack
+*
+* Uncertainties are relative.
+*
+* @param[in] args Parameter pack
+* @param[out] result Propagated uncertainty
+*/
+template<typename... Ts>
+double UncertaintyProp(Ts... args)
+{
+   constexpr unsigned long size = sizeof...(args);
+   double entries[size] = {static_cast<double>(args)...};
+   return UncertaintyPropFromCArray(entries, size);
+}
+
+/*! @brief Returns product of values from C array
+*
+* Can be used with std::vector or std::array as such: ProductFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Product
+*/
+template <typename T> 
+T ProductFromCArray(const T *entries, const unsigned long n)
+{
+   T result = entries[0];
+   for (unsigned long i = 1; i < n; i++)
+   {
+      result *= entries[i];
+   }
+   return result;
+}
+
+/*! @brief Returns product of values from parameter pack.
+*
+* @param[in] args Parameter pack
+* @param[out] result Product
+*/
 template <typename... Ts> 
 double Product(Ts... args)
 {
-   constexpr int size = sizeof...(args);
+   constexpr unsigned long size = sizeof...(args);
    double entries[size] = {static_cast<double>(args)...};
-   double result = 1.;
-   for (double val : entries) result *= val;
-   return result;
+   return ProductFromCArray(entries, size);
 }
 
+/*! @brief Returns probability of at least 1 success from probabilities of different independent successes from C array
+*
+* Can be used with std::vector or std::array as such: AtLeast1ProbFromCArray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result Probability
+*/
 template <typename T> 
-double VecProduct(const std::vector<T>& args)
+double AtLeast1ProbFromCArray(const T *entries, const unsigned long n)
 {
-   double result = 1.;
-   for (T val : args) result *= static_cast<double>(val);
-   return result;
-}
-
-template <typename... Ts> 
-double AtLeast1Prob(Ts... args)
-{
-   constexpr int size = sizeof...(args);
-   double entries[size] = {static_cast<double>(args)...};
    double prod = 1.;
-   for (double val : entries) prod *= 1. - val;
+   for (unsigned long i = 0; i < n; i++)
+   {
+      prod *= 1. - static_cast<double>(entries[i]);
+   }
    return 1. - prod;
 }
 
+/*! @brief Returns probability of at least 1 success from probabilities of different independent successes from parameter pack
+*
+* @param[in] args Parameter pack
+* @param[out] result Probability
+*/
+template <typename... Ts> 
+double AtLeast1Prob(Ts... args)
+{
+   constexpr unsigned long size = sizeof...(args);
+   double entries[size] = {static_cast<double>(args)...};
+   return AtLeast1ProbFromCArray(entries, size);
+}
+
+/*! @brief Returns root mean square (RMS) of values from C array
+*
+* Can be used with std::vector or std::array as such: RMSFromCarray(&some_vector[0], some_vector.size())
+*
+* @param[in] entries C array
+* @param[in] n Size of C array
+* @param[out] result RMS
+*/
+template <typename T> 
+double RMSFromCArray(const T *entries, const unsigned long n)
+{
+   double result = 0.;
+   for (unsigned long i = 0; i < n; i++)
+   {
+      result += static_cast<double>(entries[i]*entries[i]);
+   }
+   return sqrt(result/static_cast<double>(n));
+}
+
+/*! @brief Returns root mean square (RMS) of values from parameter pack
+*
+* @param[in] args Parameter pack
+* @param[out] result RMS
+*/
 template<typename... Ts>
 double RMS(Ts... args)
 {
-	constexpr int size = sizeof...(args);
+	constexpr unsigned long size = sizeof...(args);
 	double entries[size] = {static_cast<double>(args)...};
-	double rms = 0;
-	for (double var : entries) rms += var*var;
-	return sqrt(rms/static_cast<double>(size));
-}
-
-double RMSv(const std::vector<double>& vec)
-{
-	double rms = 0.;
-	for (double var : vec) rms += var*var;
-	return sqrt(rms/static_cast<double>(vec.size()));
+   return RMSFromCArray(entries, size);
 }
 
 #endif /*MATH_TOOLS_HPP*/

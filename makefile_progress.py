@@ -1,5 +1,5 @@
 """
-Print makefile progress
+Python script used for printing progress when invoking make
 """
 
 import argparse
