@@ -1,10 +1,12 @@
 /** 
  *  @file   Time.hpp 
- *  @brief  Useful set of functions to print current time, time duration 
+ *  @brief  Contains useful set of functions to print current time, time duration 
  *  
- *  In order to use these functions libErrorHandler.so must be loaded
+ *  In order to use these functions libTime.so must be loaded
  *
- *  @author Sergei Antsupov
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_TIME_HPP
 #define CPP_TOOLS_TIME_HPP
@@ -33,4 +35,4 @@ namespace CppTools
                           const std::chrono::_V2::system_clock::time_point stop);
 }
 
-#endif /*CPP_TOOLS_TIME_HPP*/
+#endif /* CPP_TOOLS_TIME_HPP */

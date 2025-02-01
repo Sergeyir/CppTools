@@ -1,10 +1,12 @@
 /** 
  *  @file   Box.cpp
- *  @brief  Class Box to print variables name and value in the box in terminal
+ *  @brief  Contains realisation of class Box
  *  
- *  In order to use Box class libErrorHandler.so, libIOTools.so, libStrTools.so, libBox.so must be loaded
+ *  In order to use Box class libraries libErrorHandler.so, libIOTools.so, libStrTools.so, libBox.so must be loaded
  *
- *  @author Sergei Antsupov
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_BOX_CPP
 #define CPP_TOOLS_BOX_CPP
@@ -215,4 +217,4 @@ CppTools::Box::~Box()
    Clear();
 }
 
-#endif /*CPP_TOOLS_BOX_CPP*/
+#endif /* CPP_TOOLS_BOX_CPP */

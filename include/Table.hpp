@@ -1,10 +1,12 @@
 /** 
  *  @file   Table.hpp 
- *  @brief  Class Table to print variables name and value in the table in terminal
- *  
- *  In order to use Table class libErrorHandler.so, libIOTools.so, libTable.so must be loaded
+ *  @brief  Contains declaration of class Table
  *
- *  @author Sergei Antsupov
+ *  In order to use Table class libIOTools.so, libErrorHandler, libTable must be loaded
+ *
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_TABLE_HPP
 #define CPP_TOOLS_TABLE_HPP
@@ -41,6 +43,7 @@ namespace CppTools
        ║ some value     │ another value │ 1            ║
        ╚════════════════╧═══════════════╧══════════════╝
       \endverbatim
+    *  In order to use Table class libErrorHandler.so, libIOTools.so, libTable.so must be loaded
     */
    class Table
    {
@@ -225,4 +228,4 @@ namespace CppTools
    };
 }
 
-#endif /*CPP_TOOLS_TABLE_HPP*/
+#endif /* CPP_TOOLS_TABLE_HPP */

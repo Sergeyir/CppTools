@@ -1,10 +1,12 @@
 /** 
  *  @file   IOTools.cpp 
- *  @brief  Useful set of functions to work with input and output of the terminal
+ *  @brief  Contains useful set of functions to work with std::string and to convert various types in std::string
  *  
- *  In order to use these functions libErrorHandler.so, libStrTools.so, libIOTools.so must be loaded
+ *  In order to use functions from this file libStrTools.so must be loaded
  *
- *  @author Sergei Antsupov
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_IOTOOLS_CPP
 #define CPP_TOOLS_IOTOOLS_CPP
@@ -20,7 +22,7 @@ int CppTools::GetTerminalWidth()
 
 void CppTools::PrintInfo(const std::string& message)
 {
-   std::cout << CppTools::OutputSnippet::INFO << message << std::endl;
+   std::cout << INFO_PROMPT << message << std::endl;
 }
 
 void CppTools::PrintSimpleSeparator(const std::string& leftEdge, const std::string& body, 
@@ -78,4 +80,4 @@ void CppTools::PrintMessageBox(const std::string& message, const std::string& UL
    PrintSimpleSeparator(" " + DLCorner, horizontalLine, DRCorner, length);
 }
 
-#endif /*CPP_TOOLS_IOTOOLS_CPP*/
+#endif /* CPP_TOOLS_IOTOOLS_CPP */

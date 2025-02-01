@@ -1,7 +1,10 @@
 /** 
  *  @file   OutputColor.hpp 
- *  @brief  Aliases for colors to use in output in terminal
- *  @author Sergei Antsupov
+ *  @brief  Contains aliases for colors to use in output in terminal
+ *
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_OUTPUT_COLOR
 #define CPP_TOOLS_OUTPUT_COLOR
@@ -48,4 +51,4 @@ namespace CppTools
    const std::string COLOR_BOLD_WHITE = "\033[1m\033[37m";
 }
 
-#endif /*CPP_TOOLS_OUTPUT_COLOR*/
+#endif /* CPP_TOOLS_OUTPUT_COLOR */

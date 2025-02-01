@@ -1,10 +1,12 @@
 /** 
  *  @file   StrTools.cpp 
- *  @brief  Useful set of functions to work with std::string and to convert various types in std::string
+ *  @brief  Contains useful set of functions to work with std::string and to convert various types in std::string
  *  
- *  In order to use these functions libStrTools.so must be loaded
+ *  In order to use functions from this file libStrTools.so must be loaded
  *
- *  @author Sergei Antsupov
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_STR_TOOLS_CPP
 #define CPP_TOOLS_STR_TOOLS_CPP
@@ -56,4 +58,4 @@ std::string CppTools::BtoStr(const bool val)
    return "false";
 }
 
-#endif /*CPP_TOOLS_STR_TOOLS_CPP*/
+#endif /* CPP_TOOLS_STR_TOOLS_CPP */

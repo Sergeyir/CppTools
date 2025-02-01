@@ -2,7 +2,11 @@
  *  @file   MathTools.hpp 
  *  @brief  Useful set of math functions.
  *
- *  @author Sergei Antsupov
+ *  No library loading is required to use functions from this file since many of the functions in this file are template functions which do not support separate declaration.
+ *
+ *  This file is a part of a project CppTools (https://github.com/Sergeyir/CppTools).
+ *
+ *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
 #ifndef CPP_TOOLS_MATH_TOOLS_HPP
 #define CPP_TOOLS_MATH_TOOLS_HPP
@@ -274,4 +278,4 @@ namespace CppTools
    }
 }
 
-#endif /*CPP_TOOLS_MATH_TOOLS_HPP*/
+#endif /* CPP_TOOLS_MATH_TOOLS_HPP */
