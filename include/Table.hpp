@@ -43,7 +43,6 @@ namespace CppTools
        ║ some value     │ another value │ 1            ║
        ╚════════════════╧═══════════════╧══════════════╝
       \endverbatim
-    *  In order to use Table class libErrorHandler.so, libIOTools.so, libTable.so must be loaded
     */
    class Table
    {

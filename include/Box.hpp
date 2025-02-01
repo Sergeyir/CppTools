@@ -42,7 +42,6 @@ namespace CppTools
        ║ value4    true ║
        ╚════════════════╝
       \endverbatim
-    *  In order to use Box class libErrorHandler.so, libIOTools.so, libStrTools.so, libBox.so must be loaded
     */
    class Box
    {
