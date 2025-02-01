@@ -6,7 +6,6 @@
  *
  *  @author Sergei Antsupov
  **/
-
 #ifndef CPP_TOOLS_ERROR_HANDLER_CPP
 #define CPP_TOOLS_ERROR_HANDLER_CPP
 

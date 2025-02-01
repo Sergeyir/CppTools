@@ -4,7 +4,6 @@
  *
  *  @author Sergei Antsupov
  **/
-
 #ifndef CPP_TOOLS_MATH_TOOLS_HPP
 #define CPP_TOOLS_MATH_TOOLS_HPP
 

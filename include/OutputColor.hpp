@@ -3,7 +3,6 @@
  *  @brief  Aliases for colors to use in output in terminal
  *  @author Sergei Antsupov
  **/
-
 #ifndef CPP_TOOLS_OUTPUT_COLOR
 #define CPP_TOOLS_OUTPUT_COLOR
 
