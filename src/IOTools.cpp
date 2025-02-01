@@ -1,48 +1,31 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                               IOTools functions declarations
-//------------------------------------------------------------------------------------------------
-// IOTools: input-output tools
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of functions for handling input and output in the terminal
+/** 
+ *  @file   IOTools.cpp 
+ *  @brief  Useful set of functions to work with input and output of the terminal
+ *  
+ *  In order to use these functions libErrorHandler.so, libStrTools.so, libIOTools.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef IOTOOLS_CPP
-#define IOTOOLS_CPP
+#ifndef CPP_TOOLS_IOTOOLS_CPP
+#define CPP_TOOLS_IOTOOLS_CPP
 
 #include "../include/IOTools.hpp"
 
-int GetTerminalWidth()
+int CppTools::GetTerminalWidth()
 {
    struct winsize terminalWindow;
    ioctl(STDOUT_FILENO, TIOCGWINSZ, &(terminalWindow));
    return terminalWindow.ws_col;
 }
 
-double *ReadFileIntoArray(const std::string& fileName, const int size)
+void CppTools::PrintInfo(const std::string& message)
 {
-   CheckInputFile(fileName);
-   double *buff = new double[size];
-   std::ifstream file(fileName);
-   
-   for (int i = 0; i < size; i++) {file >> buff[i];};
-   return buff;
+   std::cout << CppTools::OutputSnippet::INFO << message << std::endl;
 }
 
-void PrintInfo(const std::string& message)
-{
-   std::cout << ErrorHandlerSnippet::INFO << message << std::endl;
-}
-
-void PrintSimpleSeparator(const std::string& leftEdge, const std::string& body, 
-                          const std::string& rightEdge, int length)
+void CppTools::PrintSimpleSeparator(const std::string& leftEdge, const std::string& body, 
+                                    const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
@@ -54,26 +37,28 @@ void PrintSimpleSeparator(const std::string& leftEdge, const std::string& body,
    std::cout << rightEdge << std::endl;
 }
 
-void PrintSeparator(const std::string& text, const std::string& color, const std::string& leftEdge, 
-                    const std::string& body, const std::string& rightEdge, int length)
+void CppTools::PrintSeparator(const std::string& message, const std::string& color, 
+                              const std::string& leftEdge, const std::string& body, 
+                              const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
    std::cout << leftEdge;
-   for (int i = 0; i < length/2 - utf8_strlen(text)/2 - utf8_strlen(leftEdge); i++) 
+   for (int i = 0; i < length/2 - utf8_strlen(message)/2 - utf8_strlen(leftEdge); i++) 
    {
       std::cout << body;
    }
-   std::cout << color << text << OutputColor::RESET;
-   for (int i = 0; i < length - length/2 - utf8_strlen(text) + utf8_strlen(text)/2 - utf8_strlen(rightEdge); i++) 
+   std::cout << color << message << COLOR_RESET;
+   for (int i = 0; i < length - length/2 - utf8_strlen(message) + utf8_strlen(message)/2 - utf8_strlen(rightEdge); i++) 
    {
       std::cout << body;
    }
    std::cout << rightEdge << std::endl;
 }
 
-void PrintEdgedLine(const std::string& entry1, const std::string& entry2, 
-                    const std::string& leftEdge, const std::string& rightEdge, int length)
+void CppTools::Print2EntrySeparator(const std::string& entry1, const std::string& entry2, 
+                                    const std::string& leftEdge, const std::string& rightEdge, 
+                                    int length)
 {
    if (length < 0) length = GetTerminalWidth();
    
@@ -84,14 +69,14 @@ void PrintEdgedLine(const std::string& entry1, const std::string& entry2,
    std::cout << entry2 << " " << rightEdge << std::endl;
 }
 
-void PrintBigSeparator(const std::string& text, const std::string& ULCorner, 
-                       const std::string& URCorner, const std::string& horizontalLine, 
-                       const std::string& verticalLine, const std::string& DLCorner, 
-                       const std::string& DRCorner)
+void CppTools::PrintMessageBox(const std::string& message, const std::string& ULCorner, 
+                               const std::string& URCorner, const std::string& horizontalLine, 
+                               const std::string& verticalLine, const std::string& DLCorner, 
+                               const std::string& DRCorner, int length)
 {
-   PrintSimpleSeparator(" " + ULCorner, horizontalLine, URCorner);
-   PrintSeparator(text, "", " " + verticalLine, " ", verticalLine);
-   PrintSimpleSeparator(" " + DLCorner, horizontalLine, DRCorner);
+   PrintSimpleSeparator(" " + ULCorner, horizontalLine, URCorner, length);
+   PrintSeparator(message, "", " " + verticalLine, " ", verticalLine, length);
+   PrintSimpleSeparator(" " + DLCorner, horizontalLine, DRCorner, length);
 }
 
-#endif /*IOTOOLS_CPP*/
+#endif /*CPP_TOOLS_IOTOOLS_CPP*/

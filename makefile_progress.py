@@ -1,5 +1,5 @@
 """
-Python script used for printing progress when invoking make
+Python script used for printing progress for compilation progress with make
 """
 
 import argparse

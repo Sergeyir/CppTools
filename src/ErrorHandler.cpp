@@ -1,38 +1,29 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                               Error handler functions declarations
-//------------------------------------------------------------------------------------------------
-// ErrorHandler
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of functions for handling errors and warnings
+/** 
+ *  @file   ErrorHandler.cpp 
+ *  @brief  Useful set of functions to print errors, warning, check existence of files, etc.
+ *  
+ *  In order to use these functions libErrorHandler.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef ERROR_HANDLER_CPP
-#define ERROR_HANDLER_CPP
+#ifndef CPP_TOOLS_ERROR_HANDLER_CPP
+#define CPP_TOOLS_ERROR_HANDLER_CPP
 
 #include "../include/ErrorHandler.hpp"
 
-// Print an error with message
-void PrintError(const std::string& message, const bool exitProgram)
+void CppTools::PrintError(const std::string& message, const bool exitProgram)
 {
-   std::cerr << ErrorHandlerSnippet::ERROR << message << OutputColor::RESET << std::endl;
+   std::cerr << OutputSnippet::ERROR << message << COLOR_RESET << std::endl;
    if (exitProgram) exit(1);
 }
 
-// Print warning with message
-void PrintWarning(const std::string& message)
+void CppTools::PrintWarning(const std::string& message)
 {
-   std::cerr << ErrorHandlerSnippet::WARNING << message << OutputColor::RESET << std::endl;
+   std::cerr << OutputSnippet::WARNING << message << COLOR_RESET << std::endl;
 }
 
-bool FileExists(const std::string& name)
+bool CppTools::FileExists(const std::string& name)
 {
    if (name == "") PrintError("Empty argument was passed for file check");
    std::ifstream file(name.c_str());
@@ -41,8 +32,7 @@ bool FileExists(const std::string& name)
    return true;
 }
 
-// Prints error or warning if file doesn't exist
-bool CheckInputFile(const std::string& name, const bool closeAfterFail)
+bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail)
 {
    if (!FileExists(name))
    {
@@ -53,12 +43,12 @@ bool CheckInputFile(const std::string& name, const bool closeAfterFail)
    return true;
 }
 
-// Checks if the file can be created
-void CheckOutputFile(const std::string& name, const std::ios_base::openmode openmode)
+void CppTools::CheckOutputFile(const std::string& name, const bool closeAfterFail,
+                               const std::ios_base::openmode openmode)
 {
    if (name == "") PrintError("Empty argument was passed for output file check");
    std::ofstream file(name.c_str(), openmode);
    if(!file.is_open()) PrintError("File " + name + " cannot be created");
 }
 
-#endif /*ERROR_HANDLER_CPP*/
+#endif /*CPP_TOOLS_ERROR_HANDLER_CPP*/

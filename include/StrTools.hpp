@@ -1,30 +1,52 @@
-// $HEADER$
-//------------------------------------------------------------------------------------------------
-//                               StrTools functions declarations
-//------------------------------------------------------------------------------------------------
-// StrTools : string tools
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of functions for handling cpp strings
+/** 
+ *  @file   StrTools.hpp 
+ *  @brief  Useful set of functions to work with std::string and to convert various types in std::string
+ *  
+ *  In order to use these functions libStrTools.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef STR_TOOLS_HPP
-#define STR_TOOLS_HPP
+#ifndef CPP_TOOLS_STR_TOOLS_HPP
+#define CPP_TOOLS_STR_TOOLS_HPP
 
 #include <string>
 #include <sstream>
 #include <iomanip>
 
-int utf8_strlen(const std::string& str);
-std::string DtoStr(const double val, const int precision = 2);
-std::string RemoveObsoletePrecision(std::string str);
-std::string RemoveObsoletePrecision(const double);
-std::string BtoStr(const bool val);
+/// @namespace CppTools CppTools namespace
+namespace CppTools
+{
+   /*! @brief Returns the length of the std::string type variable
+    * @param[in] str stringh the length of which will be returned
+    * @param[out] length the length of the passed string 
+    */
+   int utf8_strlen(const std::string& str);
+   /*! @brief Converts double to std::string with the given precision
+    * @param[in] val value to be converted 
+    * @param[in] precision floating point precision
+    * @param[out] string converted into string value
+    */
+   std::string DtoStr(const double val, const int precision = 2);
+   /*! @brief Removes every 0 until first non-zero value from right to left after the dot
+    *
+    * Example: if the value is "5.240100" the function will return "5.2401"
+    * @param[in] str string representation of floating point variable
+    * @param[out] str input variable with obsolete precision removed
+    */
+   std::string RemoveObsoletePrecision(std::string str);
+   /*! @brief Converts to std::string and removes every 0 until first non-zero value from right to left after the dot
+    *
+    * Example: if the value is 5.240100 the function will return "5.2401"
+    * @param[in] value variable to be converted and "trimmed" of the obsolete precision
+    * @param[out] str input variable with obsolete precision removed
+    */
+   std::string RemoveObsoletePrecision(const double value);
+   /*! @brief Converts bool into std::string 
+    * @param[in] val bool variable 
+    * @param[out] boolalpha string variable that is either "true" or "false"
+    */
+   std::string BtoStr(const bool val);
+}
 
-#endif /*STR_TOOLS_HPP*/
+#endif /*CPP_TOOLS_STR_TOOLS_HPP*/

@@ -1,37 +1,30 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                                Time functions declarations
-//------------------------------------------------------------------------------------------------
-// Time
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of functions for measuring time
+/** 
+ *  @file   Time.cpp 
+ *  @brief  Useful set of functions to print current time, time duration 
+ *  
+ *  In order to use these functions libErrorHandler.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef TIME_CPP
-#define TIME_CPP
+#ifndef CPP_TOOLS_TIME_CPP
+#define CPP_TOOLS_TIME_CPP
 
 #include "../include/Time.hpp"
 
-chrono_t GetCurrentTime()
+chrono_t CppTools::GetCurrentTime()
 {
    return std::chrono::high_resolution_clock::now();
 }
 
-void PrintCurrentTime()
+void CppTools::PrintCurrentTime()
 {
    const std::time_t currentTime = std::time(nullptr);
    std::cout << std::asctime(std::localtime(&currentTime));
 }
 
-void PrintTimeDuration(const std::chrono::_V2::system_clock::time_point start, 
-                       const std::chrono::_V2::system_clock::time_point stop)
+void CppTools::PrintTimeDuration(const std::chrono::_V2::system_clock::time_point start, 
+                                 const std::chrono::_V2::system_clock::time_point stop)
 {
    const unsigned int duration = (unsigned int) 
       std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
@@ -43,4 +36,4 @@ void PrintTimeDuration(const std::chrono::_V2::system_clock::time_point start,
                 duration % 1000 << "μs" << std::endl;
 }
 
-#endif /*TIME_CPP*/
+#endif /*CPP_TOOLS_TIME_CPP*/

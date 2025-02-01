@@ -1,49 +1,50 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                                   Table class declaration
-//------------------------------------------------------------------------------------------------
-// Table
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic tool for putting text output in an ascii table
+/** 
+ *  @file   Table.cpp 
+ *  @brief  Class Table to print variables name and value in the table in terminal
+ *  
+ *  In order to use Table class libErrorHandler.so, libIOTools.so, libTable.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef TABLE_CPP
-#define TABLE_CPP
+#ifndef CPP_TOOLS_TABLE_CPP
+#define CPP_TOOLS_TABLE_CPP
 
 #include "../include/Table.hpp"
 
-Table::Table(const unsigned short numberOfColumns, const int width) 
+
+CppTools::Table::Table() 
 {
-   nColumns = numberOfColumns;
-   if (width > 0) rowLength = width;
-   else rowLength = GetTerminalWidth();
+   numberOfColumns = 1;
+   tableWidth = GetTerminalWidth();
+}
+
+CppTools::Table::Table(const unsigned short nColumns, const int width) 
+{
+   numberOfColumns = nColumns;
+   if (width > 0) tableWidth = width;
+   else tableWidth = GetTerminalWidth();
 };
 
-void Table::Begin(const std::string& name)
+void CppTools::Table::Begin(const std::string& name)
 {
-   PrintSimpleSeparator(" " + ULBorderCorner, horizontalBorder, URBorderCorner);
-   PrintSeparator(name, OutputColor::GREEN, " " + verticalBorder, " ", verticalBorder);
+   PrintSimpleSeparator(" " + ULBorderCornerTable, horizontalBorderTable, URBorderCornerTable, tableWidth);
+   PrintSeparator(name, COLOR_GREEN, " " + verticalBorderTable, " ", verticalBorderTable, tableWidth);
 }
 
-void Table::End()
+void CppTools::Table::End()
 {
-   std::cout << " " << DLBorderCorner;
-   for (int i = 0; i < rowLength - utf8_strlen(rightDoubleAdjVerticalBorder) - utf8_strlen(leftDoubleAdjVerticalBorder) - 1; i++)
+   std::cout << " " << BLBorderCornerTable;
+   for (int i = 0; i < tableWidth - utf8_strlen(rightTableAdjLeftVerticalBorderTable) - 
+        utf8_strlen(leftTableAdjRightVerticalBorderTable) - 1; i++)
    {
-      if (i != 0 && i % static_cast<int>(cellSize) == 0 && 
-          rowLength - i >= cellSize) std::cout << upAdjHorizontalBorder;
-      else std::cout << horizontalBorder;
+      if (i != 0 && i % static_cast<int>(cellWidth) == 0 && 
+          tableWidth - i >= cellWidth) std::cout << topCellAdjBottomHorizontalBorderTable;
+      else std::cout << horizontalBorderTable;
    }
-   std::cout << DRBorderCorner << std::endl;
+   std::cout << BRBorderCornerTable << std::endl;
 }
 
-Table::~Table() {};
+CppTools::Table::~Table() {};
 
-#endif /*TABLE_CPP*/
+#endif /*CPP_TOOLS_TABLE_CPP*/

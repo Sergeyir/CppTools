@@ -1,25 +1,18 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                               StrTools functions realisations
-//------------------------------------------------------------------------------------------------
-// StrTools : string tools
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic set of functions for handling cpp strings
+/** 
+ *  @file   StrTools.cpp 
+ *  @brief  Useful set of functions to work with std::string and to convert various types in std::string
+ *  
+ *  In order to use these functions libStrTools.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef STR_TOOLS_CPP
-#define STR_TOOLS_CPP
+#ifndef CPP_TOOLS_STR_TOOLS_CPP
+#define CPP_TOOLS_STR_TOOLS_CPP
 
 #include "../include/StrTools.hpp"
 
-int utf8_strlen(const std::string& str)
+int CppTools::utf8_strlen(const std::string& str)
 {
    int length = 0;
    for (long unsigned int i=0; i < str.length(); i++, length++)
@@ -34,7 +27,7 @@ int utf8_strlen(const std::string& str)
    return length;
 }
 
-std::string RemoveObsoletePrecision(std::string str)
+std::string CppTools::RemoveObsoletePrecision(std::string str)
 {
    for (unsigned long i = str.size()-1; i > str.find("."); i--)
    {
@@ -46,22 +39,22 @@ std::string RemoveObsoletePrecision(std::string str)
    return str;
 }
 
-std::string RemoveObsoletePrecision(const double value)
+std::string CppTools::RemoveObsoletePrecision(const double value)
 {
    return RemoveObsoletePrecision(std::to_string(value));
 }
 
-std::string DtoStr(const double val, const int precision)
+std::string CppTools::DtoStr(const double val, const int precision)
 {
    std::stringstream ssval;
    ssval << std::fixed << std::setprecision(precision) << val;
    return ssval.str();
 }
 
-std::string BtoStr(const bool val)
+std::string CppTools::BtoStr(const bool val)
 {
    if (val) return "true";
    return "false";
 }
 
-#endif /*STR_TOOLS_CPP*/
+#endif /*CPP_TOOLS_STR_TOOLS_CPP*/

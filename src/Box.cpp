@@ -1,93 +1,92 @@
-// $SOURCE$
-//------------------------------------------------------------------------------------------------
-//                                   Box class realisation
-//------------------------------------------------------------------------------------------------
-// Box
-//
-// ** Free and open code for anyone to use **
-//
-// Author: Sergei Antsupov
-// Email: antsupov0124@gmail.com
-//
-/**
- * Basic tool for putting text output in an ascii box
+/** 
+ *  @file   Box.cpp
+ *  @brief  Class Box to print variables name and value in the box in terminal
+ *  
+ *  In order to use Box class libErrorHandler.so, libIOTools.so, libStrTools.so, libBox.so must be loaded
+ *
+ *  @author Sergei Antsupov
  **/
-//------------------------------------------------------------------------------------------------
 
-#ifndef BOX_CPP
-#define BOX_CPP
+#ifndef CPP_TOOLS_BOX_CPP
+#define CPP_TOOLS_BOX_CPP
 
 #include "../include/Box.hpp"
 
-Box::Box() {}
+CppTools::Box::Box() {}
 
-Box::Box(const std::string& boxName) 
+CppTools::Box::Box(const std::string& boxName, const int width) 
+{
+   SetName(boxName);
+   SetWidth(width);
+}
+
+void CppTools::Box::SetName(const std::string& boxName) 
 {
    name = boxName;
 }
 
-void Box::SetName(const std::string& boxName) 
+void CppTools::Box::SetWidth(const int width) 
 {
-   name = boxName;
+   boxWidth = width;
 }
 
-void Box::AddEntry(const std::string& name, const double value, 
+void CppTools::Box::AddEntry(const std::string& name, const double value, 
                    const unsigned int precision)
 {
    entryNames.push_back(name);
    entryValues.push_back(DtoStr(value, precision));
 }
 
-void Box::AddEntry(const std::string& name, const int value)
+void CppTools::Box::AddEntry(const std::string& name, const int value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const short value)
+void CppTools::Box::AddEntry(const std::string& name, const short value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const long value)
+void CppTools::Box::AddEntry(const std::string& name, const long value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const unsigned int value)
+void CppTools::Box::AddEntry(const std::string& name, const unsigned int value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const unsigned short value)
+void CppTools::Box::AddEntry(const std::string& name, const unsigned short value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const unsigned long value)
+void CppTools::Box::AddEntry(const std::string& name, const unsigned long value)
 {
    entryNames.push_back(name);
    entryValues.push_back(std::to_string(value));
 }
 
-void Box::AddEntry(const std::string& name, const std::string& value)
+void CppTools::Box::AddEntry(const std::string& name, const std::string& value)
 {
    entryNames.push_back(name);
    entryValues.push_back(value);
 }
 
-void Box::AddEntry(const std::string& name, const bool value)
+void CppTools::Box::AddEntry(const std::string& name, const bool value)
 {
    entryNames.push_back(name);
    entryValues.push_back(BtoStr(value));
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<double>& values, 
-                   const unsigned int precision)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<double>& values, 
+                             const unsigned int precision)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -98,7 +97,7 @@ void Box::AddEntry(const std::string& name, const std::vector<double>& values,
    entryValues.back() += DtoStr(values.back(), precision);
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<int>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<int>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -109,7 +108,7 @@ void Box::AddEntry(const std::string& name, const std::vector<int>& values)
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<short>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<short>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -120,7 +119,7 @@ void Box::AddEntry(const std::string& name, const std::vector<short>& values)
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<long>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<long>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -131,7 +130,7 @@ void Box::AddEntry(const std::string& name, const std::vector<long>& values)
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<unsigned int>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<unsigned int>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -142,7 +141,7 @@ void Box::AddEntry(const std::string& name, const std::vector<unsigned int>& val
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<unsigned short>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<unsigned short>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -153,7 +152,7 @@ void Box::AddEntry(const std::string& name, const std::vector<unsigned short>& v
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<unsigned long>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<unsigned long>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -164,7 +163,7 @@ void Box::AddEntry(const std::string& name, const std::vector<unsigned long>& va
    entryValues.back() += std::to_string(values.back());
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<std::string>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<std::string>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -175,7 +174,7 @@ void Box::AddEntry(const std::string& name, const std::vector<std::string>& valu
    entryValues.back() += values.back();
 }
 
-void Box::AddEntry(const std::string& name, const std::vector<bool>& values)
+void CppTools::Box::AddEntry(const std::string& name, const std::vector<bool>& values)
 {
    entryNames.push_back(name);
    entryValues.emplace_back("");
@@ -186,37 +185,35 @@ void Box::AddEntry(const std::string& name, const std::vector<bool>& values)
    entryValues.back() += BtoStr(values.back());
 }
 
-void Box::Print(const std::string& titleColor)
+void CppTools::Box::Print(const std::string& titleColor)
 {
    if (entryNames.size() == 0) 
    {
-      PrintWarning("Box cannot be printed: number of entries is 0");
+      CppTools::PrintWarning("Box cannot be printed: number of entries is 0");
       return;
    }
 
-   const unsigned short width = GetTerminalWidth() - 1;
-   
-   PrintSimpleSeparator(" ╔", "═", "╗", width);
-   PrintSeparator(name, titleColor, " ║", " ", "║", width);
-   PrintSimpleSeparator(" ╟", "─", "╢", width);
+   PrintSimpleSeparator(" ╔", "═", "╗ ", boxWidth);
+   PrintSeparator(name, titleColor, " ║", " ", "║ ", boxWidth);
+   PrintSimpleSeparator(" ╟", "─", "╢ ", boxWidth);
    
    for (long unsigned int i = 0; i < entryNames.size(); i++)
    {
-      PrintEdgedLine(entryNames[i], entryValues[i], " ║", "║", width);
+      Print2EntrySeparator(entryNames[i], entryValues[i], " ║", "║ ", boxWidth);
    }
    
-   PrintSimpleSeparator(" ╚", "═", "╝", width);   
+   PrintSimpleSeparator(" ╚", "═", "╝ ", boxWidth);
 }
 
-void Box::Clear()
+void CppTools::Box::Clear()
 {
    entryNames.clear();
    entryValues.clear();
 }
 
-Box::~Box()
+CppTools::Box::~Box()
 {
    Clear();
 }
 
-#endif /*BOX_CPP*/
+#endif /*CPP_TOOLS_BOX_CPP*/
