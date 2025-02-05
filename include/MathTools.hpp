@@ -135,16 +135,15 @@ namespace CppTools
 
    /*! @brief Returns average value from parameter pack.
     *
-    * @param[in] args Parameter pack
-    * @param[in] average Average value from the parameter pack
+    * @param[in] args Parameter pack, last value in the pack must be the average value of the pack
     * @param[out] result Standard error value
     */
    template <typename... Ts> 
-   double StandardError(Ts... args, const double average)
+   double StandardError(Ts... args)
    {
       constexpr unsigned long size = sizeof...(args);
       double entries[size] = {static_cast<double>(args)...};
-      return StandardErrorFromCArray(entries, size, average);
+      return StandardErrorFromCArray(entries, size - 1, entries[size - 1]);
    }
 
    /*! @brief Returns uncertainty that is the propagated uncertainty from all uncertainties from C array
