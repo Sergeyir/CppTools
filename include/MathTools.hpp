@@ -21,8 +21,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: MaximumFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Maximum value
     */
    template <typename T> 
@@ -53,8 +53,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: MinimumArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Minimum value
     */
    template <typename T> 
@@ -85,8 +85,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: AverageFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Average value
     */
    template <typename T> 
@@ -113,12 +113,33 @@ namespace CppTools
       return AverageFromCArray(entries, size);
    }
 
+   /*! @brief Returns average value from C arrays containing values and weights
+    *
+    * Can be used with std::vector or std::array as such: WeightedAverage(&some_vector[0], some_vector.size())
+    *
+    * @param[in] entries array with values
+    * @param[in] weights array with weights
+    * @param[in] n Size of array
+    * @param[out] result Weighted average value
+    */
+   double WeightedAverage(const double *entries, const double *weights, const unsigned long n)
+   {
+      double result = 0;
+      double sumOfWeights = 0;
+      for (unsigned long i = 0; i < n; i++)
+      {
+         result += entries[i]*weights[i];
+         sumOfWeights += weights[i];
+      }
+      return result/sumOfWeights;
+   }
+
    /*! @brief Returns standard error value from C array
     *
     * Can be used with std::vector or std::array as such: StandardErrorFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Standard error value
     */
    template <typename T> 
@@ -150,8 +171,8 @@ namespace CppTools
     *
     * Uncertainties are relative. Can be used with std::vector or std::array as such: StandardErrorFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array (contains uncertainties)
-    * @param[in] n Size of C array
+    * @param[in] entries array (contains uncertainties)
+    * @param[in] n Size of array
     * @param[out] result Propagated uncertainty
     */
    template <typename T> 
@@ -184,8 +205,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: ProductFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Product
     */
    template <typename T> 
@@ -216,8 +237,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: AtLeast1ProbFromCArray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result Probability
     */
    template <typename T> 
@@ -248,8 +269,8 @@ namespace CppTools
     *
     * Can be used with std::vector or std::array as such: RMSFromCarray(&some_vector[0], some_vector.size())
     *
-    * @param[in] entries C array
-    * @param[in] n Size of C array
+    * @param[in] entries array
+    * @param[in] n Size of array
     * @param[out] result RMS
     */
    template <typename T> 

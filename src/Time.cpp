@@ -29,7 +29,7 @@ void CppTools::PrintTimeDuration(const std::chrono::_V2::system_clock::time_poin
 {
    const unsigned int duration = (unsigned int) 
       std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count();
-   
+
    std::cout << duration/3600000000000 << "h " << 
                 (duration % 3600000000)/60000000000 << "m " << 
                 (duration % 60000000)/1000000 << "s " << 

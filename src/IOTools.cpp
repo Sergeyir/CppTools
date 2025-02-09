@@ -29,7 +29,7 @@ void CppTools::PrintSimpleSeparator(const std::string& leftEdge, const std::stri
                                     const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
-   
+
    std::cout << leftEdge;
    for (int i = 0; i < length - utf8_strlen(leftEdge) - utf8_strlen(rightEdge); i++) 
    {
@@ -43,7 +43,7 @@ void CppTools::PrintSeparator(const std::string& message, const std::string& col
                               const std::string& rightEdge, int length)
 {
    if (length < 0) length = GetTerminalWidth();
-   
+
    std::cout << leftEdge;
    for (int i = 0; i < length/2 - utf8_strlen(message)/2 - utf8_strlen(leftEdge); i++) 
    {
@@ -62,7 +62,7 @@ void CppTools::Print2EntrySeparator(const std::string& entry1, const std::string
                                     int length)
 {
    if (length < 0) length = GetTerminalWidth();
-   
+
    std::cout << leftEdge << " " << entry1;
    int space_size = length - utf8_strlen(entry1) - utf8_strlen(entry2) - 
                     utf8_strlen(leftEdge) - utf8_strlen(rightEdge) - 2;

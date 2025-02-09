@@ -197,12 +197,12 @@ void CppTools::Box::Print(const std::string& titleColor)
    PrintSimpleSeparator(" ╔", "═", "╗ ", boxWidth);
    PrintSeparator(name, titleColor, " ║", " ", "║ ", boxWidth);
    PrintSimpleSeparator(" ╟", "─", "╢ ", boxWidth);
-   
+
    for (long unsigned int i = 0; i < entryNames.size(); i++)
    {
       Print2EntrySeparator(entryNames[i], entryValues[i], " ║", "║ ", boxWidth);
    }
-   
+
    PrintSimpleSeparator(" ╚", "═", "╝ ", boxWidth);
 }
 

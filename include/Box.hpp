@@ -163,13 +163,13 @@ namespace CppTools
       /*! @brief Remove box entries
        */
       void Clear();
-      
+
       /*! @brief Descructor
        */
       virtual ~Box();
-      
+
       protected:
-      
+
       /// width of the box
       int boxWidth = -1;
       /// text in the head of the box

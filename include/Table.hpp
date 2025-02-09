@@ -73,7 +73,7 @@ namespace CppTools
          }
 
          std::string dummy[size] = {(std::string) args...};
-         
+
          //checks whether or not next cell should be printed
          bool check = true;
          //number of the next cell to be printed
@@ -135,7 +135,7 @@ namespace CppTools
       void PrintRow(Ts... args)
       {
          constexpr unsigned short size = sizeof...(args);
-         
+
          if (size != numberOfColumns) 
          {
             PrintError("Number of arguments is not equal to the number of columns:" + 
@@ -143,7 +143,7 @@ namespace CppTools
          }
 
          std::string dummy[size] = {(std::string) args...};
-         
+
          //checks whether or not next cell shoudl be printed
          bool check = true;
          //number of the next cell to be printed
@@ -170,7 +170,7 @@ namespace CppTools
          }
          std::cout << verticalBorderTable << std::endl;
       }
-      
+
       /*! @brief Prints the end of the table (bottom line that separates cell contents from other contents in terminal)
        */
       void End();
@@ -180,7 +180,7 @@ namespace CppTools
       virtual ~Table();
 
       protected:
-      
+
       /// upper left border corner of the table
       std::string ULBorderCornerTable = "╔";
       /// upper right border corner of the table
@@ -217,7 +217,7 @@ namespace CppTools
       std::string topCellAdjBottomHorizontalBorderTable = "╧";
       /// cross between cells borders
       std::string cross = "┼";
-      
+
       /// number of columns in a table
       int numberOfColumns;
       /// lenght of a row, i.e. width of a table
