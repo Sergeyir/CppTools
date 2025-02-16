@@ -1,6 +1,6 @@
 # Overview
 
-This is a simple set of useful classes and functions to use in any cpp applications on linux.
+This is a simple set of useful classes and functions to use in any cpp applications on linux such as useful math function (including variadic ones), functions that allow you to write Error, Warning, Info and other promts, functions that simplify work with std::string and std::ifstream, classes that allow you to print boxes and tables containing useful information, etc. For more information see the documentation.
 
 # Requirements
 
@@ -22,7 +22,7 @@ make
 
 # Documentation
 
-You can view the detailed documentation https://sergeyir.github.io/CppTools/ (see Namespaces / Namespaces List / CppTools). Since this repository is not designed to be used on it's own and is intended to be used as a set of libraries every class, method, and variable are all in CppTools namespace scope.
+You can view the detailed documentation https://sergeyir.github.io/CppTools/ (see Namespaces/Namespaces List/CppTools). Since this repository is not designed to be used on it's own and is intended to be used as a set of libraries every class, method, and variable are all in CppTools namespace scope.
 
 If the link is unaccesible you can generate the documentation yourself with doxygen. To do this run while in root of the repository
 
