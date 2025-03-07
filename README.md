@@ -20,9 +20,15 @@ Run in the downloaded directory to compile the libraries (you can use option -jN
 make
 ```
 
+There is also an option to generate the Makefile with cmake
+
+```sh
+cmake -B./build && cd build && make
+```
+
 # Documentation
 
-Run in the downloaded directory to compile the libraries (you can use option -jN to compile on multiple threads). You can view the detailed documentation at https://sergeyir.github.io/CppTools/ (see Namespaces/Namespaces List/CppTools). Since this repository is not designed to be used on its own and is intended to be used as a set of libraries, every class, method, and variable is all in the CppTools namespace scope.
+Run in the downloaded directory to compile the libraries (you can use option -jN to compile on multiple threads). You can view the detailed documentation at https://sergeyir.github.io/documentation/CppTools/ (see Namespaces/Namespaces List/CppTools). Since this repository is not designed to be used on its own and is intended to be used as a set of libraries, every class, method, and variable is all in the CppTools namespace scope.
 
 If the link is inaccessible, you can generate the documentation yourself with Doxygen. To do this run while in the root of the repository
 
@@ -37,4 +43,4 @@ xdg-open html/index.html
 ```
 
 # Usage
-In order to use functions and classes from this project while compiling link libraries libBox.so, libTime.so, libTable.so, libIOTools.so, libStrTools.so, libErrorHandler.so (see $CPP_TOOLS_LIB in Makefile and Makefile.inc for more detail), and don't forget to include the needed header files (see the list of files in the documentation https://sergeyir.github.io/CppTools/files.html).
+In order to use functions and classes from this project while compiling link libraries libBox.so, libTime.so, libTable.so, libIOTools.so, libStrTools.so, libErrorHandler.so (see $CPP_TOOLS_LIB in Makefile and Makefile.inc for more detail or see CMakeLists.txt), and don't forget to include the needed header files (see the list of files in the documentation https://sergeyir.github.io/documentation/CppTools/files.html).
