@@ -1,6 +1,7 @@
 lib/
 html/
 latex/
+build/
 
 *:w
 *.log
