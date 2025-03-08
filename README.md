@@ -14,16 +14,22 @@ Run in your working directory to copy the repository
 git clone https://github.com/Sergeyir/CppTools --depth=1
 ```
 
-Run in the downloaded directory to compile the libraries (you can use option -jN to compile on multiple threads)
+Run in the downloaded directory to generate Makefile 
+
+```sh
+cmake .
+```
+
+Then run to compile the libraries (you can use option -jN to compile on multiple threads)
 
 ```sh 
 make
 ```
 
-There is also an option to generate the Makefile with cmake
+Or you can use Makefile from etc directory
 
 ```sh
-cmake -B./build && cd build && make
+cp etc/Makefile* . && make
 ```
 
 # Documentation

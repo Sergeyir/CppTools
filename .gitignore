@@ -2,6 +2,7 @@ lib/
 html/
 latex/
 build/
+CMakeFiles/
 
 *:w
 *.log
@@ -10,3 +11,6 @@ build/
 *.o
 *.so
 *.a
+
+CMakeCache.txt
+./Makefile
