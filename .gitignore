@@ -13,4 +13,4 @@ CMakeFiles/
 *.a
 
 CMakeCache.txt
-./Makefile
+Makefile
