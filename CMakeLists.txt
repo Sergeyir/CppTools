@@ -12,14 +12,14 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(ErrorHandler ${CMAKE_SOURCE_DIR}/src/ErrorHandler.cpp)
-add_library(StrTools ${CMAKE_SOURCE_DIR}/src/StrTools.cpp)
-add_library(Time ${CMAKE_SOURCE_DIR}/src/Time.cpp)
-add_library(IOTools ${CMAKE_SOURCE_DIR}/src/IOTools.cpp)
-add_library(Box ${CMAKE_SOURCE_DIR}/src/Box.cpp)
-add_library(Table ${CMAKE_SOURCE_DIR}/src/Table.cpp)
+add_library(ErrorHandler ${CMAKE_CURRENT_SOURCE_DIR}/src/ErrorHandler.cpp)
+add_library(StrTools ${CMAKE_CURRENT_SOURCE_DIR}/src/StrTools.cpp)
+add_library(Time ${CMAKE_CURRENT_SOURCE_DIR}/src/Time.cpp)
+add_library(IOTools ${CMAKE_CURRENT_SOURCE_DIR}/src/IOTools.cpp)
+add_library(Box ${CMAKE_CURRENT_SOURCE_DIR}/src/Box.cpp)
+add_library(Table ${CMAKE_CURRENT_SOURCE_DIR}/src/Table.cpp)
 
 target_link_libraries(IOTools ErrorHandler StrTools)
 target_link_libraries(Box ErrorHandler StrTools IOTools)
