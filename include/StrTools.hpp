@@ -15,7 +15,7 @@
 #include <sstream>
 #include <iomanip>
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @brief Returns the length of the std::string type variable

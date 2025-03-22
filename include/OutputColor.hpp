@@ -11,7 +11,7 @@
 
 #include <string>
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /// default color in terminal (aka white)

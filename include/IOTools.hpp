@@ -20,7 +20,7 @@
 #include "ErrorHandler.hpp"
 #include "StrTools.hpp"
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @brief Variadic print functions

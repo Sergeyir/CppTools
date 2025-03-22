@@ -16,7 +16,7 @@
 
 #include "OutputColor.hpp"
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /// String containing red text "ERROR"

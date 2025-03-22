@@ -15,7 +15,7 @@
 #include "IOTools.hpp"
 #include "ErrorHandler.hpp"
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @class Table

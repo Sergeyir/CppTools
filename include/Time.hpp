@@ -17,7 +17,7 @@
 
 typedef std::chrono::_V2::system_clock::time_point chrono_t;
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @brief Returns current time as std::chrono::_V2::system_clock::time_point (or chrono_t)

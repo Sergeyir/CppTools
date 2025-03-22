@@ -14,7 +14,7 @@
 #include <vector>
 #include <cmath>
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @brief Returns maximum value from C array

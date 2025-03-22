@@ -16,7 +16,7 @@
 #include "IOTools.hpp"
 #include "StrTools.hpp"
 
-/// @namespace CppTools CppTools namespace
+/// @namespace CppTools
 namespace CppTools
 {
    /*! @class Box
