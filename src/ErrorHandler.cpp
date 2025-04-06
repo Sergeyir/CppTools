@@ -26,7 +26,11 @@ void CppTools::PrintWarning(const std::string& message)
 
 bool CppTools::FileExists(const std::string& name)
 {
-   if (name == "") PrintError("Empty argument was passed for file check");
+   if (name.empty()) 
+   {
+      PrintWarning("Empty argument was passed for file check");
+      return false;
+   }
    std::ifstream file(name.c_str());
 
    if(!file.is_open()) return false;
