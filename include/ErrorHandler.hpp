@@ -24,7 +24,7 @@ namespace CppTools
    /// String containing magenta text "WARNING"
    const std::string WARNING_PROMPT = COLOR_MAGENTA + " WARNING: " + COLOR_RESET; 
    /// String containing green text "INFO"
-   const std::string INFO_PROMPT = "[" + COLOR_GREEN + "INFO" + COLOR_RESET + "] "; 
+   const std::string INFO_PROMPT = " [ " + COLOR_GREEN + "INFO" + COLOR_RESET + " ] "; 
 
    /*! @brief Prints error prompt
     * @param[in] message text to print in the error prompt
