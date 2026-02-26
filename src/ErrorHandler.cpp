@@ -24,20 +24,9 @@ void CppTools::PrintWarning(const std::string& message)
    std::cerr << WARNING_PROMPT << message << COLOR_RESET << std::endl;
 }
 
-bool CppTools::FileExists(const std::string& name)
-{
-   if (name.empty()) 
-   {
-      PrintWarning("Empty argument was passed for file check");
-      return false;
-   }
-   if(!std::filesystem::exists(name)) return false;
-   return true;
-}
-
 bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail)
 {
-   if (!FileExists(name))
+   if (!std::filesystem::exists(name))
    {
       if (closeAfterFail) PrintError("File " + name + " not found");
       else PrintWarning("File " + name + " not found");

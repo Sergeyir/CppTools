@@ -36,10 +36,6 @@ namespace CppTools
     * @param[in] message text to print in the error prompt
     */
    void PrintWarning(const std::string& message);
-   /*! @brief Returns true if the file exists, else false
-    * @param[in] name name of file to be checked
-    */
-   bool FileExists(const std::string& name);
    /*! @brief Checks whether the file exists or not
     * If files exists the function does nothing, else it prints error or warning
     * @param[in] name name of file to be checked 
