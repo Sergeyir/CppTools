@@ -31,9 +31,7 @@ bool CppTools::FileExists(const std::string& name)
       PrintWarning("Empty argument was passed for file check");
       return false;
    }
-   std::ifstream file(name.c_str());
-
-   if(!file.is_open()) return false;
+   if(!std::filesystem::exists(name)) return false;
    return true;
 }
 
