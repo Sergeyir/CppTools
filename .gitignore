@@ -11,8 +11,8 @@ CMakeFiles/
 *.o
 *.so
 *.a
+*.cmake
 
 CMakeCache.txt
 Makefile
 tags
-*.cmake
