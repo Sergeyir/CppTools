@@ -233,7 +233,7 @@ namespace CppTools
       return ProductFromCArray(entries, size);
    }
 
-   /*! @brief Returns probability of at least 1 success from probabilities of different independent successes from C array
+   /*! @brief Returns probability or weight of at least 1 success from probabilities of different independent successes from C array
     *
     * Can be used with std::vector or std::array as such: AtLeast1ProbFromCArray(&some_vector[0], some_vector.size())
     *
@@ -244,15 +244,31 @@ namespace CppTools
    template <typename T> 
    double AtLeast1ProbFromCArray(const T *entries, const unsigned long n)
    {
-      double prod = 1.;
+      double result = 1.;
+
+      // shows whether the array contains weights larger than 1
+      bool containsLargeWeights = false;
       for (unsigned long i = 0; i < n; i++)
       {
-         prod *= 1. - static_cast<double>(entries[i]);
+         if (static_cast<double>(entries[i]) > 1.)
+         {
+            result *= entries[i];
+            containsLargeWeights = true;
+         }
       }
-      return 1. - prod;
+
+      if (containsLargeWeights) return result;
+
+      for (unsigned long i = 0; i < n; i++)
+      {
+         result *= 1. - static_cast<double>(entries[i]);
+      }
+      result = 1. - result;
+
+      return result;
    }
 
-   /*! @brief Returns probability of at least 1 success from probabilities of different independent successes from parameter pack
+   /*! @brief Returns probability or weight of at least 1 success from probabilities of different independent successes from parameter pack
     *
     * @param[in] args Parameter pack
     * @param[out] result Probability
