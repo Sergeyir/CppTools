@@ -80,6 +80,12 @@ void CppTools::Box::AddEntry(const std::string& name, const std::string& value)
    entryValues.push_back(value);
 }
 
+void CppTools::Box::AddEntry(const std::string& name, const char *value)
+{
+   entryNames.push_back(name);
+   entryValues.push_back(value);
+}
+
 void CppTools::Box::AddEntry(const std::string& name, const bool value)
 {
    entryNames.push_back(name);

@@ -104,6 +104,11 @@ namespace CppTools
        * @param[in] value 
        */
       void AddEntry(const std::string& name, const std::string& value);
+      /*! @brief Add char* type value to the box
+       * @param[in] name value's name
+       * @param[in] value 
+       */
+      void AddEntry(const std::string& name, const char *value);
       /*! @brief Add bool type value to the box
        * @param[in] name value's name
        * @param[in] value it will converted into std::string and printed as either "true" or "false"
