@@ -13,8 +13,12 @@
 
 #include "../include/ErrorHandler.hpp"
 
-void CppTools::PrintError(const std::string& message, const bool exitProgram)
+void CppTools::PrintError(const std::string& message, const bool exitProgram, 
+                          const std::source_location location)
 {
+   std::cerr << " In " << location.file_name() << '('
+              << location.line() << ':' << location.column() << ") `"
+              << location.function_name() << "`: " << std::endl;
    std::cerr << ERROR_PROMPT << message << COLOR_RESET << std::endl;
    if (exitProgram) exit(1);
 }

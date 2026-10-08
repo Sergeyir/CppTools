@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <source_location>
 
 #include "OutputColor.hpp"
 
@@ -31,7 +32,8 @@ namespace CppTools
     * @param[in] message text to print in the error prompt
     * @param[in] exitProgram if true the function calls exit(1) after printing error prompt
     */
-   void PrintError(const std::string& message, const bool exitProgram = true);
+   void PrintError(const std::string& message, const bool exitProgram = true,
+                   const std::source_location location = std::source_location::current());
    /*! @brief Prints warning prompt
     * @param[in] message text to print in the error prompt
     */
