@@ -44,15 +44,7 @@ namespace CppTools
     * @param[in] closeAfterFail if true and if file does not exist function prints error and 
     * calls exit(1); if false and file does not exist function simply prints warning
     */
-   bool CheckInputFile(const std::string& name, const bool closeAfterFail = true);
-   /*! @brief Checks whether the file can be created
-    * If files exists the function does nothing, else it prints error or warning
-    * @param[in] name name of file to be checked
-    * @param[in] closeAfterFail if true and if file cannot be created function prints error and 
-    * calls exit(1); if false and file cannot be created function simply prints warning
-    * @param[in] openmode used for constructor of ofstream 
-    */
-   void CheckOutputFile(const std::string& name, const bool closeAfterFail = true,
-                        const std::ios_base::openmode openmode = std::ios::out);
+   bool CheckInputFile(const std::string& name, const bool closeAfterFail = true, 
+                       const std::source_location location = std::source_location::current());
 }
 #endif /* CPP_TOOLS_ERROR_HANDLER_HPP */

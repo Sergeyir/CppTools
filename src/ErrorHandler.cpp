@@ -28,23 +28,16 @@ void CppTools::PrintWarning(const std::string& message)
    std::cerr << WARNING_PROMPT << message << COLOR_RESET << std::endl;
 }
 
-bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail)
+bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail, 
+                              const std::source_location location)
 {
    if (!std::filesystem::exists(name))
    {
-      if (closeAfterFail) PrintError("File " + name + " not found");
+      if (closeAfterFail) PrintError("File " + name + " not found", true, location);
       else PrintWarning("File " + name + " not found");
       return false;
    }
    return true;
-}
-
-void CppTools::CheckOutputFile(const std::string& name, const bool closeAfterFail,
-                               const std::ios_base::openmode openmode)
-{
-   if (name == "") PrintError("Empty argument was passed for output file check");
-   std::ofstream file(name.c_str(), openmode);
-   if(!file.is_open()) PrintError("File " + name + " cannot be created");
 }
 
 #endif /* CPP_TOOLS_ERROR_HANDLER_CPP */
