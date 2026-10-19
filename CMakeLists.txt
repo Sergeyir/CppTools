@@ -2,7 +2,14 @@ cmake_minimum_required(VERSION 3.0...3.31.6 FATAL_ERROR)
 
 project(CppTools)
 
-set(CMAKE_CXX_STANDARD 17)
+if(CMAKE_CXX_STANDARD LESS 17)
+   message(FATAL_ERROR "C++17 or newer is required")
+elseif(CMAKE_CXX_STANDARD LESS 20)
+   set(CMAKE_CXX_STANDARD 17)
+else()
+   set(CMAKE_CXX_STANDARD 20)
+endif()
+
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_FLAGS "-Wall -Werror -Wpedantic -pipe -O2")
 
