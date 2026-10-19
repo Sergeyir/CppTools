@@ -26,9 +26,12 @@ void CppTools::PrintError(const std::string& message, const bool exitProgram,
 }
 #else 
 void CppTools::PrintError(const std::string& message, const bool exitProgram, 
-                          const char *func, const char* file, const int line)
+                          const std::string& func, const std::string& file, const int line)
 {
-   std::cerr << " In " << file << '(' << line << ") `" << func << "`: " << std::endl;
+   if (!func.empty() || !file.empty())
+   {
+      std::cerr << " In " << file << '(' << line << ") `" << func << "`: " << std::endl;
+   }
    std::cerr << ERROR_PROMPT << message << COLOR_RESET << std::endl;
    if (exitProgram) exit(1);
 }
@@ -53,7 +56,7 @@ bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail
 }
 #else
 bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail, 
-                              const char *func, const char* file, const int line)
+                              const std::string& func, const std::string& file, const int line)
 {
    if (!std::filesystem::exists(name))
    {
