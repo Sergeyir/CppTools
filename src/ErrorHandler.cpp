@@ -13,6 +13,8 @@
 
 #include "../include/ErrorHandler.hpp"
 
+
+#if (__cplusplus >= 202000L || _MSVC_LANG >= 202000L)
 void CppTools::PrintError(const std::string& message, const bool exitProgram, 
                           const std::source_location location)
 {
@@ -22,12 +24,22 @@ void CppTools::PrintError(const std::string& message, const bool exitProgram,
    std::cerr << ERROR_PROMPT << message << COLOR_RESET << std::endl;
    if (exitProgram) exit(1);
 }
+#else 
+void CppTools::PrintError(const std::string& message, const bool exitProgram, 
+                          const char* file, const int line, const char *func)
+{
+   std::cerr << " In " << file << '(' << line << ") `" << func << "`: " << std::endl;
+   std::cerr << ERROR_PROMPT << message << COLOR_RESET << std::endl;
+   if (exitProgram) exit(1);
+}
+#endif
 
 void CppTools::PrintWarning(const std::string& message)
 {
    std::cerr << WARNING_PROMPT << message << COLOR_RESET << std::endl;
 }
 
+#if (__cplusplus >= 202000L || _MSVC_LANG >= 202000L)
 bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail, 
                               const std::source_location location)
 {
@@ -39,5 +51,18 @@ bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail
    }
    return true;
 }
+#else
+bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail, 
+                              const char* file, const int line, const char *func)
+{
+   if (!std::filesystem::exists(name))
+   {
+      if (closeAfterFail) PrintError("File " + name + " not found", true, file, line, func);
+      else PrintWarning("File " + name + " not found");
+      return false;
+   }
+   return true;
+}
+#endif
 
 #endif /* CPP_TOOLS_ERROR_HANDLER_CPP */
