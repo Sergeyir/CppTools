@@ -26,7 +26,7 @@ void CppTools::PrintError(const std::string& message, const bool exitProgram,
 }
 #else 
 void CppTools::PrintError(const std::string& message, const bool exitProgram, 
-                          const char* file, const int line, const char *func)
+                          const char *func, const char* file, const int line)
 {
    std::cerr << " In " << file << '(' << line << ") `" << func << "`: " << std::endl;
    std::cerr << ERROR_PROMPT << message << COLOR_RESET << std::endl;
@@ -53,11 +53,11 @@ bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail
 }
 #else
 bool CppTools::CheckInputFile(const std::string& name, const bool closeAfterFail, 
-                              const char* file, const int line, const char *func)
+                              const char *func, const char* file, const int line)
 {
    if (!std::filesystem::exists(name))
    {
-      if (closeAfterFail) PrintError("File " + name + " not found", true, file, line, func);
+      if (closeAfterFail) PrintError("File " + name + " not found", true, func, file, line);
       else PrintWarning("File " + name + " not found");
       return false;
    }

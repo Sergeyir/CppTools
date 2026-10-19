@@ -44,7 +44,7 @@ namespace CppTools
     * @param[in] exitProgram if true the function calls exit(1) after printing error prompt
     */
    void PrintError(const std::string& message, const bool exitProgram = true, 
-                   const char* file = __FILE__, const int line = __LINE__, const char *func = "");
+                   const char *func = "", const char* file = __FILE__, const int line = __LINE__);
 #endif
    /*! @brief Prints warning prompt
     * @param[in] message text to print in the error prompt
@@ -67,7 +67,7 @@ namespace CppTools
     * calls exit(1); if false and file does not exist function simply prints warning
     */
    bool CheckInputFile(const std::string& name, const bool closeAfterFail = true, 
-                       const char* file = __FILE__, const int line = __LINE__, const char* func = "");
+                       const char* func = "", const char* file = __FILE__, const int line = __LINE__);
 #endif
 }
 #endif /* CPP_TOOLS_ERROR_HANDLER_HPP */
